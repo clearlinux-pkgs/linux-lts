@@ -1,4 +1,4 @@
-From e3c6091c20e902f2683f949bb0f2bac47d47e84e Mon Sep 17 00:00:00 2001
+From 7c44ed6db1615ceb856d3a74fc26abe778bd4d7d Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Thu, 20 Aug 2015 20:22:14 +0000
 Subject: [PATCH 05/15] raid6: reduce boot time

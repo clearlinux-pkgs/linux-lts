@@ -1,4 +1,4 @@
-From 5d83df4a8e17d5269c063ae32da62c0a02c4b46b Mon Sep 17 00:00:00 2001
+From f430da72645f146ba95ce4b6f262ac1588cd2c0f Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Wed, 23 Mar 2016 14:52:41 +0000
 Subject: [PATCH 14/15] init_task: faster timerslack
@@ -8,7 +8,7 @@ Subject: [PATCH 14/15] init_task: faster timerslack
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/linux/init_task.h b/include/linux/init_task.h
-index f2cb8d4..cd7ddbb 100644
+index 1c1ff7e..219ff3b 100644
 --- a/include/linux/init_task.h
 +++ b/include/linux/init_task.h
 @@ -238,7 +238,7 @@ extern struct task_group root_task_group;

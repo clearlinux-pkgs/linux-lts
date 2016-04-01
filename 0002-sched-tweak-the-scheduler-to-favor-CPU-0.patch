@@ -1,4 +1,4 @@
-From 56258b9e9707b1303e78eb149254e3e281c2501a Mon Sep 17 00:00:00 2001
+From f919cd8ecb611e9ee7f82100c6409456416292a1 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Thu, 12 Feb 2015 10:37:43 -0600
 Subject: [PATCH 02/15] sched: tweak the scheduler to favor CPU 0
@@ -17,10 +17,10 @@ Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index 56b7d4b..df7e5b0 100644
+index cfdc0e6..166cd01 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
-@@ -5068,6 +5068,8 @@ select_task_rq_fair(struct task_struct *p, int prev_cpu, int sd_flag, int wake_f
+@@ -4931,6 +4931,8 @@ select_task_rq_fair(struct task_struct *p, int prev_cpu, int sd_flag, int wake_f
  	int want_affine = 0;
  	int sync = wake_flags & WF_SYNC;
  
