@@ -77,7 +77,7 @@ Group:          kernel
 Oracle VirtualBox guest additions modules
 
 %prep
-%setup -q -n linux-4.5
+%setup -q -n linux-4.4.6
 
 #%patch1 -p1
 %patch2 -p1
