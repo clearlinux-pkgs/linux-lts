@@ -54,6 +54,11 @@ Patch0115: 0115-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
+Patch1001: 1001-aufs-kbuild.patch
+Patch1002: 1002-aufs-base.patch
+Patch1003: 1003-aufs-mmap.patch
+Patch1004: 1004-aufs-standalone.patch
+Patch1005: 1005-aufs-driver-and-docs.patch
 
 # DPDK 16.04 integration
 Patch2001: 2001-dpdk-add-source-files.patch
@@ -106,11 +111,11 @@ Oracle VirtualBox guest additions modules
 
 # Serie    XYYY: Extra features modules
 # AUFS
-#%patch1001 -p1
-#%patch1002 -p1
-#%patch1003 -p1
-#%patch1004 -p1
-#%patch1005 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
 
 # DPDK 16.04 integration
 %patch2001 -p1
