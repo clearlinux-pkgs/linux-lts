@@ -54,6 +54,8 @@ Patch0115: 0115-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
 Patch0116: 0116-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
 Patch0117: 0117-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
 Patch0118: 0118-overload-on-wakeup.patch
+Patch0119: 0119-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
+Patch0120: 0120-fix-initcall-timestamps.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -114,6 +116,8 @@ Oracle VirtualBox guest additions modules
 %patch0116 -p1
 %patch0117 -p1
 %patch0118 -p1
+%patch0119 -p1
+%patch0120 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
