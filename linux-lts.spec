@@ -56,6 +56,7 @@ Patch0117: 0117-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
 Patch0118: 0118-fix-initcall-timestamps.patch
 Patch0119: 0119-smpboot-reuse-timer-calibration.patch
 Patch0120: 0120-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
+Patch0121: 0121-Initialize-ata-before-graphics.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -118,6 +119,7 @@ Oracle VirtualBox guest additions modules
 %patch0118 -p1
 %patch0119 -p1
 %patch0120 -p1
+%patch0121 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
