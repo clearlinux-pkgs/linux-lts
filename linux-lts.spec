@@ -56,6 +56,7 @@ Patch0117: 0117-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
 Patch0118: 0118-overload-on-wakeup.patch
 Patch0119: 0119-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
 Patch0120: 0120-fix-initcall-timestamps.patch
+Patch0121: 0121-smpboot-reuse-timer-calibration.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -118,6 +119,7 @@ Oracle VirtualBox guest additions modules
 %patch0118 -p1
 %patch0119 -p1
 %patch0120 -p1
+%patch0121 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
