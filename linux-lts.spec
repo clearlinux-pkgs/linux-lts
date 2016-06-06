@@ -40,23 +40,22 @@ Patch0101: 0101-init-don-t-wait-for-PS-2-at-boot.patch
 Patch0102: 0102-sched-tweak-the-scheduler-to-favor-CPU-0.patch
 Patch0103: 0103-kvm-silence-kvm-unhandled-rdmsr.patch
 Patch0104: 0104-i8042-decrease-debug-message-level-to-info.patch
-Patch0105: 0105-raid6-reduce-boot-time.patch
-Patch0106: 0106-net-tcp-reduce-minimal-ack-time-down-from-40-msec.patch
-Patch0107: 0107-init-do_mounts-recreate-dev-root.patch
-Patch0108: 0108-Increase-the-ext4-default-commit-age.patch
-Patch0109: 0109-silence-rapl.patch
-Patch0110: 0110-pci-pme-wakeups.patch
-Patch0111: 0111-ksm-wakeups.patch
-Patch0112: 0112-intel_idle-tweak-cpuidle-cstates.patch
-Patch0113: 0113-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
-Patch0114: 0114-init_task-faster-timerslack.patch
-Patch0115: 0115-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
-Patch0116: 0116-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
-Patch0117: 0117-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
-Patch0118: 0118-overload-on-wakeup.patch
-Patch0119: 0119-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
-Patch0120: 0120-fix-initcall-timestamps.patch
-Patch0121: 0121-smpboot-reuse-timer-calibration.patch
+Patch0105: 0105-net-tcp-reduce-minimal-ack-time-down-from-40-msec.patch
+Patch0106: 0106-init-do_mounts-recreate-dev-root.patch
+Patch0107: 0107-Increase-the-ext4-default-commit-age.patch
+Patch0108: 0108-silence-rapl.patch
+Patch0109: 0109-pci-pme-wakeups.patch
+Patch0110: 0110-ksm-wakeups.patch
+Patch0111: 0111-intel_idle-tweak-cpuidle-cstates.patch
+Patch0112: 0112-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
+Patch0113: 0113-init_task-faster-timerslack.patch
+Patch0114: 0114-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
+Patch0115: 0115-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
+Patch0116: 0116-overload-on-wakeup.patch
+Patch0117: 0117-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
+Patch0118: 0118-fix-initcall-timestamps.patch
+Patch0119: 0119-smpboot-reuse-timer-calibration.patch
+Patch0120: 0120-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -119,7 +118,6 @@ Oracle VirtualBox guest additions modules
 %patch0118 -p1
 %patch0119 -p1
 %patch0120 -p1
-%patch0121 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
