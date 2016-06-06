@@ -52,6 +52,7 @@ Patch0113: 0113-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
 Patch0114: 0114-init_task-faster-timerslack.patch
 Patch0115: 0115-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
 Patch0116: 0116-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
+Patch0117: 0117-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
 # Serie    XYYY: Extra features modules
 # AUFS
 Patch1001: 1001-aufs-kbuild.patch
@@ -109,6 +110,7 @@ Oracle VirtualBox guest additions modules
 %patch0114 -p1
 %patch0115 -p1
 %patch0116 -p1
+%patch0117 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
