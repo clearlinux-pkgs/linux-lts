@@ -1,7 +1,7 @@
-From 02c2fbabebbabcaf97507959778033267740190c Mon Sep 17 00:00:00 2001
+From 72f8744f6aa9e1de20d789d1b588fefb7cbe5202 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 19 Mar 2016 21:32:19 -0400
-Subject: [PATCH 112/115] intel_idle: tweak cpuidle cstates
+Subject: [PATCH 111/124] intel_idle: tweak cpuidle cstates
 
 Increase target_residency in cpuidle cstate
 
@@ -179,5 +179,5 @@ index 146eed70b..e441dde 100644
  		.enter_freeze = intel_idle_freeze, },
  	{
 -- 
-2.8.2
+2.9.0
 

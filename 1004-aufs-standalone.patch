@@ -1,10 +1,33 @@
+From 36b719b069d04939fd5967b73910d1e7df68a201 Mon Sep 17 00:00:00 2001
+From: "J. R. Okajima" <hooanon05g@gmail.com>
+Date: Fri, 13 May 2016 12:12:39 +0900
+Subject: [PATCH 1004/1005] aufs standalone
+
 aufs4.4 standalone patch
+---
+ fs/dcache.c              |  1 +
+ fs/exec.c                |  1 +
+ fs/fcntl.c               |  1 +
+ fs/file_table.c          |  4 ++++
+ fs/inode.c               |  1 +
+ fs/namespace.c           |  2 ++
+ fs/notify/group.c        |  4 ++++
+ fs/notify/mark.c         |  4 ++++
+ fs/open.c                |  2 ++
+ fs/read_write.c          |  2 ++
+ fs/splice.c              |  2 ++
+ fs/xattr.c               |  1 +
+ kernel/task_work.c       |  1 +
+ security/commoncap.c     |  2 ++
+ security/device_cgroup.c |  2 ++
+ security/security.c      | 10 ++++++++++
+ 16 files changed, 40 insertions(+)
 
 diff --git a/fs/dcache.c b/fs/dcache.c
-index 8aa7f26..ff9a6f3 100644
+index 42e0ad6..a6f87e0 100644
 --- a/fs/dcache.c
 +++ b/fs/dcache.c
-@@ -1272,6 +1272,7 @@ rename_retry:
+@@ -1261,6 +1261,7 @@ rename_retry:
  	seq = 1;
  	goto again;
  }
@@ -72,6 +95,18 @@ index ad17e05..ae9f267 100644
  
  void __init files_init(void)
  { 
+diff --git a/fs/inode.c b/fs/inode.c
+index 05c423e..5d437a9 100644
+--- a/fs/inode.c
++++ b/fs/inode.c
+@@ -1593,6 +1593,7 @@ int update_time(struct inode *inode, struct timespec *time, int flags)
+ 
+ 	return update_time(inode, time, flags);
+ }
++EXPORT_SYMBOL_GPL(update_time);
+ 
+ /**
+  *	touch_atime	-	update the access time
 diff --git a/fs/namespace.c b/fs/namespace.c
 index 0570729..fc50028 100644
 --- a/fs/namespace.c
@@ -165,7 +200,7 @@ index fc0df44..8175f3c 100644
  static int fsnotify_mark_destroy(void *ignored)
  {
 diff --git a/fs/open.c b/fs/open.c
-index b6f1e96..e59c51b 100644
+index 157b994..f8898b4 100644
 --- a/fs/open.c
 +++ b/fs/open.c
 @@ -64,6 +64,7 @@ int do_truncate(struct dentry *dentry, loff_t length, unsigned int time_attrs,
@@ -205,10 +240,10 @@ index fd0414e..0a28933 100644
  ssize_t __kernel_write(struct file *file, const char *buf, size_t count, loff_t *pos)
  {
 diff --git a/fs/splice.c b/fs/splice.c
-index 30a091d..b0ade1f 100644
+index 42dc0d5..22d18ed 100644
 --- a/fs/splice.c
 +++ b/fs/splice.c
-@@ -1123,6 +1123,7 @@ long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
+@@ -1126,6 +1126,7 @@ long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
  
  	return splice_write(pipe, out, ppos, len, flags);
  }
@@ -216,7 +251,7 @@ index 30a091d..b0ade1f 100644
  
  /*
   * Attempt to initiate a splice from a file to a pipe.
-@@ -1149,6 +1150,7 @@ long do_splice_to(struct file *in, loff_t *ppos,
+@@ -1152,6 +1153,7 @@ long do_splice_to(struct file *in, loff_t *ppos,
  
  	return splice_read(in, ppos, pipe, len, flags);
  }
@@ -225,10 +260,10 @@ index 30a091d..b0ade1f 100644
  /**
   * splice_direct_to_actor - splices data directly between two non-pipes
 diff --git a/fs/xattr.c b/fs/xattr.c
-index 9b932b9..0c317c4 100644
+index ed01d84..7ae7334 100644
 --- a/fs/xattr.c
 +++ b/fs/xattr.c
-@@ -207,6 +207,7 @@ vfs_getxattr_alloc(struct dentry *dentry, const char *name, char **xattr_value,
+@@ -209,6 +209,7 @@ vfs_getxattr_alloc(struct dentry *dentry, const char *name, char **xattr_value,
  	*xattr_value = value;
  	return error;
  }
@@ -246,10 +281,10 @@ index 53fa971..bce3211 100644
  }
 +EXPORT_SYMBOL_GPL(task_work_run);
 diff --git a/security/commoncap.c b/security/commoncap.c
-index 1832cf7..646e9b2 100644
+index 48071ed..50a1a40 100644
 --- a/security/commoncap.c
 +++ b/security/commoncap.c
-@@ -1053,12 +1053,14 @@ int cap_mmap_addr(unsigned long addr)
+@@ -1058,12 +1058,14 @@ int cap_mmap_addr(unsigned long addr)
  	}
  	return ret;
  }
@@ -368,3 +403,6 @@ index 46f405c..bc8514e 100644
  
  int security_mmap_addr(unsigned long addr)
  {
+-- 
+2.9.0
+

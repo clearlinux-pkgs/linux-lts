@@ -4,13 +4,15 @@
 #
 
 Name:           linux-lts
-Version:        4.4.14
-Release:        9
+Version:        4.4.15
+# Sync Version  4.6.4  # Latest version syncted with linux (-native) package
+Release:        10
+# Sync Release  245    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.14.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.15.tar.xz
 Source1:        config
 Source2:        cmdline
 
@@ -18,9 +20,7 @@ Source2:        cmdline
 
 BuildRequires:  bash >= 2.03
 BuildRequires:  bc
-# For bfd support in perf/trace
 BuildRequires:  binutils-dev
-BuildRequires:  elfutils
 BuildRequires:  elfutils-dev
 BuildRequires:  kmod
 BuildRequires:  make >= 3.78
@@ -34,15 +34,19 @@ BuildRequires:  bison
 %define __strip /bin/true
 
 # Serie    00XX: mainline, CVE, bugfixes patches
-
+Patch0001: 0001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
 Patch0002: cve-2016-4440.patch
 Patch0003: cve-2016-4470.patch
 Patch0004: cve-2016-5829.patch
-#Patch0005: cve-2016-5828.nopatch # No x86 arch
+Patch0005: cve-2016-5828.nopatch
+Patch0006: cve-2016-5243.patch
+Patch0007: cve-2016-5244.patch
+Patch0008: cve-2016-1237_requires.patch
+Patch0009: cve-2016-1237.patch
 
 # Serie    01XX: Clear Linux patches
-Patch0101: 0101-init-don-t-wait-for-PS-2-at-boot.patch
-Patch0102: 0102-sched-tweak-the-scheduler-to-favor-CPU-0.patch
+#Patch0101: 0101-init-don-t-wait-for-PS-2-at-boot.patch
+#Patch0102: 0102-sched-tweak-the-scheduler-to-favor-CPU-0.patch
 Patch0103: 0103-kvm-silence-kvm-unhandled-rdmsr.patch
 Patch0104: 0104-i8042-decrease-debug-message-level-to-info.patch
 Patch0105: 0105-net-tcp-reduce-minimal-ack-time-down-from-40-msec.patch
@@ -62,8 +66,9 @@ Patch0118: 0118-fix-initcall-timestamps.patch
 Patch0119: 0119-smpboot-reuse-timer-calibration.patch
 Patch0120: 0120-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
 Patch0121: 0121-Initialize-ata-before-graphics.patch
-Patch0122: 0122-e1000e-reduce-sleep-time.patch
+Patch0122: 0122-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
 Patch0123: 0123-xor-skip-benchmark-allocations-for-short-circuit-pat.patch
+Patch0124: 0124-input-i8042-Fix-console-keyboard-support-on-Gen2-Hyp.patch
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -82,16 +87,20 @@ Patch3001: 3001-virtualbox-add-module-sources.patch
 Patch3002: 3002-virtualbox-add-Kconfs-and-Makefiles.patch
 
 # 4.6 sata backports
-Patch4001: 0001-libata-support-AHCI-on-OCTEON-platform.patch
-Patch4002: 0002-libata-fix-unbalanced-spin_lock_irqsave-spin_unlock_.patch
-Patch4003: 0003-ata-ahci_mvebu-add-support-for-Armada-3700-variant.patch
-Patch4004: 0004-block-Add-blk_set_runtime_active.patch
-Patch4005: 0005-scsi-Set-request-queue-runtime-PM-status-back-to-act.patch
-Patch4006: 0006-scsi-Drop-runtime-PM-usage-count-after-host-is-added.patch
-Patch4007: 0007-ahci-Cache-host-controller-version.patch
-Patch4008: 0008-ahci-Convert-driver-to-use-modern-PM-hooks.patch
-Patch4009: 0009-ahci-Add-functions-to-manage-runtime-PM-of-AHCI-port.patch
-Patch4010: 0010-ahci-Add-runtime-PM-support-for-the-host-controller.patch
+Patch4001: 4001-libata-support-AHCI-on-OCTEON-platform.patch
+Patch4002: 4002-libata-fix-unbalanced-spin_lock_irqsave-spin_unlock_.patch
+Patch4003: 4003-ata-ahci_mvebu-add-support-for-Armada-3700-variant.patch
+Patch4004: 4004-block-Add-blk_set_runtime_active.patch
+Patch4005: 4005-scsi-Set-request-queue-runtime-PM-status-back-to-act.patch
+Patch4006: 4006-scsi-Drop-runtime-PM-usage-count-after-host-is-added.patch
+Patch4007: 4007-ahci-Cache-host-controller-version.patch
+Patch4008: 4008-ahci-Convert-driver-to-use-modern-PM-hooks.patch
+Patch4009: 4009-ahci-Add-functions-to-manage-runtime-PM-of-AHCI-port.patch
+Patch4010: 4010-ahci-Add-runtime-PM-support-for-the-host-controller.patch
+
+# Extra backported features
+Patch5001: 5001-uvc-driver-Add-support-for-F200-color-formats.patch
+Patch5002: 5002-uvc-driver-Add-support-for-R200-color-formats.patch
 
 %description
 The Linux kernel.
@@ -113,18 +122,22 @@ Group:          kernel
 Oracle VirtualBox guest additions modules
 
 %prep
-%setup -q -n linux-4.4.14
+%setup -q -n linux-4.4.15
 
 # Serie    00XX: mainline, CVE, bugfixes patches
-
+%patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
 %patch0004 -p1
 #%patch0005 -p1 # # No x86 arch
+%patch0006 -p1
+%patch0007 -p1
+%patch0008 -p1
+%patch0009 -p1
 
 # Serie    01XX: Clear Linux patches
 #%patch0101 -p1
-%patch0102 -p1
+#%patch0102 -p1
 %patch0103 -p1
 %patch0104 -p1
 %patch0105 -p1
@@ -146,6 +159,7 @@ Oracle VirtualBox guest additions modules
 %patch0121 -p1
 %patch0122 -p1
 %patch0123 -p1
+%patch0124 -p1
 
 # Serie    XYYY: Extra features modules
 # AUFS
@@ -174,6 +188,10 @@ Oracle VirtualBox guest additions modules
 %patch4008 -p1
 %patch4009 -p1
 %patch4010 -p1
+
+# Extra backported features
+%patch5001 -p1
+%patch5002 -p1
 
 cp %{SOURCE1} .
 

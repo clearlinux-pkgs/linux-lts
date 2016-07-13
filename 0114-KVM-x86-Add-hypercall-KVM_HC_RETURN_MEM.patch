@@ -1,7 +1,7 @@
-From be8fd58ffdbe2410d9af1e07ee763a31cf0b14e6 Mon Sep 17 00:00:00 2001
+From a26400cd6132a24c163dd97ca60a2f6212187fee Mon Sep 17 00:00:00 2001
 From: Chao Peng <chao.p.peng@linux.intel.com>
 Date: Wed, 13 May 2015 15:04:13 +0800
-Subject: [PATCH 115/115] KVM: x86: Add hypercall KVM_HC_RETURN_MEM
+Subject: [PATCH 114/124] KVM: x86: Add hypercall KVM_HC_RETURN_MEM
 
 To give guest a simple interface to return unused memory to host.
 
@@ -12,7 +12,7 @@ Signed-off-by: Chao Peng <chao.p.peng@linux.intel.com>
  2 files changed, 15 insertions(+)
 
 diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-index 976cfa0..36b7306 100644
+index e6603dd..76039ae 100644
 --- a/arch/x86/kvm/x86.c
 +++ b/arch/x86/kvm/x86.c
 @@ -45,6 +45,7 @@
@@ -23,7 +23,7 @@ index 976cfa0..36b7306 100644
  #include <linux/perf_event.h>
  #include <linux/uaccess.h>
  #include <linux/hash.h>
-@@ -5873,6 +5874,16 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
+@@ -5878,6 +5879,16 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
  	kvm_irq_delivery_to_apic(kvm, NULL, &lapic_irq, NULL);
  }
  
@@ -40,7 +40,7 @@ index 976cfa0..36b7306 100644
  int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
  {
  	unsigned long nr, a0, a1, a2, a3, ret;
-@@ -5913,6 +5924,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
+@@ -5918,6 +5929,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
  		kvm_pv_kick_cpu_op(vcpu->kvm, a0, a1);
  		ret = 0;
  		break;
@@ -63,5 +63,5 @@ index bf6cd7d..edbba71 100644
  /*
   * hypercalls use architecture specific
 -- 
-2.8.2
+2.9.0
 
