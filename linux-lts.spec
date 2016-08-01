@@ -36,7 +36,6 @@ BuildRequires:  bison
 # Serie    00XX: mainline, CVE, bugfixes patches
 Patch0001: 0001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
 Patch0002: cve-2016-4440.patch
-Patch0005: cve-2016-5828.nopatch
 Patch0006: cve-2016-5243.patch
 Patch0007: cve-2016-5244.patch
 
@@ -117,7 +116,6 @@ Oracle VirtualBox guest additions modules
 # Serie    00XX: mainline, CVE, bugfixes patches
 %patch0001 -p1
 %patch0002 -p1
-#%patch0005 -p1 # # No x86 arch
 %patch0006 -p1
 %patch0007 -p1
 
