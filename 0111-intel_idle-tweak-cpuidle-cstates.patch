@@ -1,4 +1,4 @@
-From 72f8744f6aa9e1de20d789d1b588fefb7cbe5202 Mon Sep 17 00:00:00 2001
+From 2cbc2a65c25b7065f5c280d33878e12f950fa615 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 19 Mar 2016 21:32:19 -0400
 Subject: [PATCH 111/124] intel_idle: tweak cpuidle cstates
@@ -179,5 +179,5 @@ index 146eed70b..e441dde 100644
  		.enter_freeze = intel_idle_freeze, },
  	{
 -- 
-2.9.0
+2.9.1
 

@@ -1,4 +1,4 @@
-From b2dda20c5976dbdb170e37b1cc9858b60031a486 Mon Sep 17 00:00:00 2001
+From 2335025c8ff3948f49cea5c6145530c1816033a6 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Thu, 2 Jun 2016 23:36:32 -0500
 Subject: [PATCH 121/124] Initialize ata before graphics
@@ -43,5 +43,5 @@ index 795d0ca..7209950 100644
  obj-$(CONFIG_MTD)		+= mtd/
  obj-$(CONFIG_SPI)		+= spi/
 -- 
-2.9.0
+2.9.1
 

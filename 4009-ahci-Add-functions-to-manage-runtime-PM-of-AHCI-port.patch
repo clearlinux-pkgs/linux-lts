@@ -1,4 +1,4 @@
-From 04cbefb6fd41c65fea7f1aaad7d902d85ea233b3 Mon Sep 17 00:00:00 2001
+From a1d71d9bbc221863c0ec55326930f4e3d12b7ea1 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:16 +0200
 Subject: [PATCH 4009/4010] ahci: Add functions to manage runtime PM of AHCI
@@ -173,5 +173,5 @@ index bfc107a..2b5e33e 100644
  }
  #endif
 -- 
-2.9.0
+2.9.1
 

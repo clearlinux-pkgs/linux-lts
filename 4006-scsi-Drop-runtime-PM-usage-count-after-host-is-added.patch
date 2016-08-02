@@ -1,4 +1,4 @@
-From 8b95695094fa252ef2561e6fa5791010168b1ed8 Mon Sep 17 00:00:00 2001
+From 1d048e8d2f7f6d847c9aebb2dcf7581002e0408b Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:13 +0200
 Subject: [PATCH 4006/4010] scsi: Drop runtime PM usage count after host is
@@ -50,5 +50,5 @@ index 82ac1cd..e46bf4d 100644
  
   out_destroy_host:
 -- 
-2.9.0
+2.9.1
 

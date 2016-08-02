@@ -1,4 +1,4 @@
-From 5c23247a50a28dd3822f2a6f9e96e1b1ff9b976d Mon Sep 17 00:00:00 2001
+From 15e7ad033172aa6c4aeccea980dcaf75c8794c4b Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Thu, 2 Jun 2016 23:36:32 -0500
 Subject: [PATCH 118/124] fix initcall timestamps
@@ -38,5 +38,5 @@ index 7ecdbd1..e244ee9 100644
  		 fn, ret, duration);
  
 -- 
-2.9.0
+2.9.1
 

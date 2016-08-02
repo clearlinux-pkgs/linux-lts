@@ -1,4 +1,4 @@
-From 33bd764f2715babb712e6b6bb3b1098a35208f1c Mon Sep 17 00:00:00 2001
+From 5bb79a52bbb5903b831b65667643be363b92f167 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:11 +0200
 Subject: [PATCH 4004/4010] block: Add blk_set_runtime_active()
@@ -77,5 +77,5 @@ index 89768cb..a456412 100644
  
  /*
 -- 
-2.9.0
+2.9.1
 

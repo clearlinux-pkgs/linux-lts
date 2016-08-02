@@ -1,4 +1,4 @@
-From c5bc0352b3c10a7fa2769ca84fda81c03ef8e582 Mon Sep 17 00:00:00 2001
+From ad7c5bfc60e3a19aae16352d62cf0cb9a32c2c98 Mon Sep 17 00:00:00 2001
 From: Lior Amsalem <alior@marvell.com>
 Date: Tue, 16 Feb 2016 19:14:54 +0100
 Subject: [PATCH 4003/4010] ata: ahci_mvebu: add support for Armada 3700
@@ -52,5 +52,5 @@ index f7a7fa8..de7128d 100644
  };
  MODULE_DEVICE_TABLE(of, ahci_mvebu_of_match);
 -- 
-2.9.0
+2.9.1
 

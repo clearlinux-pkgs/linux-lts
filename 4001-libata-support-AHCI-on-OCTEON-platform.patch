@@ -1,4 +1,4 @@
-From cfaf1cad4d9b30bc8a8ec8f99188951af07075b4 Mon Sep 17 00:00:00 2001
+From ffcad0da5fc76dca79488bdebe7ac6629909b2b2 Mon Sep 17 00:00:00 2001
 From: Aleksey Makarov <aleksey.makarov@caviumnetworks.com>
 Date: Thu, 11 Feb 2016 13:53:08 +0000
 Subject: [PATCH 4001/4010] libata: support AHCI on OCTEON platform
@@ -268,5 +268,5 @@ index 639adb1..62a04c8 100644
  };
  MODULE_DEVICE_TABLE(of, ahci_of_match);
 -- 
-2.9.0
+2.9.1
 

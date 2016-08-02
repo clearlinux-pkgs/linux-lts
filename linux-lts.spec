@@ -34,10 +34,10 @@ BuildRequires:  bison
 %define __strip /bin/true
 
 # Serie    00XX: mainline, CVE, bugfixes patches
-Patch0001: 0001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
-Patch0002: cve-2016-4440.patch
-Patch0006: cve-2016-5243.patch
-Patch0007: cve-2016-5244.patch
+Patch0001: cve-2016-4440.patch
+Patch0002: cve-2016-5243.patch
+Patch0003: cve-2016-5243_fix.patch
+Patch0004: cve-2016-5244.patch
 
 # Serie    01XX: Clear Linux patches
 #Patch0101: 0101-init-don-t-wait-for-PS-2-at-boot.patch
@@ -67,6 +67,11 @@ Patch0124: 0124-input-i8042-Fix-console-keyboard-support-on-Gen2-Hyp.patch
 
 # Serie    XYYY: Extra features modules
 
+# Extra backported features
+Patch1001: 1001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
+Patch1002: 1002-uvc-driver-Add-support-for-F200-color-formats.patch
+Patch1003: 1003-uvc-driver-Add-support-for-R200-color-formats.patch
+
 # DPDK 16.04 integration
 Patch2001: 2001-dpdk-add-source-files.patch
 Patch2002: 2002-dpdk-Integrate-Kconfig-and-Makefiles.patch
@@ -86,10 +91,6 @@ Patch4007: 4007-ahci-Cache-host-controller-version.patch
 Patch4008: 4008-ahci-Convert-driver-to-use-modern-PM-hooks.patch
 Patch4009: 4009-ahci-Add-functions-to-manage-runtime-PM-of-AHCI-port.patch
 Patch4010: 4010-ahci-Add-runtime-PM-support-for-the-host-controller.patch
-
-# Extra backported features
-Patch5001: 5001-uvc-driver-Add-support-for-F200-color-formats.patch
-Patch5002: 5002-uvc-driver-Add-support-for-R200-color-formats.patch
 
 %description
 The Linux kernel.
@@ -116,8 +117,8 @@ Oracle VirtualBox guest additions modules
 # Serie    00XX: mainline, CVE, bugfixes patches
 %patch0001 -p1
 %patch0002 -p1
-%patch0006 -p1
-%patch0007 -p1
+%patch0003 -p1
+%patch0004 -p1
 
 # Serie    01XX: Clear Linux patches
 #%patch0101 -p1
@@ -147,6 +148,11 @@ Oracle VirtualBox guest additions modules
 
 # Serie    XYYY: Extra features modules
 
+# Extra backported features
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+
 # DPDK 16.04 integration
 %patch2001 -p1
 %patch2002 -p1
@@ -166,10 +172,6 @@ Oracle VirtualBox guest additions modules
 %patch4008 -p1
 %patch4009 -p1
 %patch4010 -p1
-
-# Extra backported features
-%patch5001 -p1
-%patch5002 -p1
 
 cp %{SOURCE1} .
 

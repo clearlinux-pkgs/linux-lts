@@ -1,4 +1,4 @@
-From 21146152dc7e1cc27c33e9086c45f6553d0db3a6 Mon Sep 17 00:00:00 2001
+From 0b95b6785b5ff3f5784a5a584aef959ce617676a Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 6 Jun 2016 15:25:33 -0500
 Subject: [PATCH 119/124] smpboot: reuse timer calibration
@@ -26,5 +26,5 @@ index c7c4d9c..8913f79 100644
  		if (cpu_data(i).phys_proc_id == cpu_data(cpu).phys_proc_id)
  			return cpu_data(i).loops_per_jiffy;
 -- 
-2.9.0
+2.9.1
 

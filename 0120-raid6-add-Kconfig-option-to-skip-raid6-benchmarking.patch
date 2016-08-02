@@ -1,4 +1,4 @@
-From 6378c0a112161f23a0dcde8b2c6308abab0081e4 Mon Sep 17 00:00:00 2001
+From 027e6cba1997303611088c9a38cc280e9f7a69b0 Mon Sep 17 00:00:00 2001
 From: Jim Kukunas <james.t.kukunas@linux.intel.com>
 Date: Fri, 27 May 2016 09:26:51 -0400
 Subject: [PATCH 120/124] raid6: add Kconfig option to skip raid6 benchmarking
@@ -152,5 +152,5 @@ index 975c6e0..7f03acc 100644
  static void raid6_exit(void)
  {
 -- 
-2.9.0
+2.9.1
 

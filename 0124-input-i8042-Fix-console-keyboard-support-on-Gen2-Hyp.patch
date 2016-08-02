@@ -1,4 +1,4 @@
-From e8a25b5a8d4c6698c62bbce0d74a959411fdf390 Mon Sep 17 00:00:00 2001
+From 53dc9cefd40cfaaec928cd852deda8e4424cdc4f Mon Sep 17 00:00:00 2001
 From: Mark Laws <mdl@60hz.org>
 Date: Wed, 8 Jun 2016 13:12:16 -0500
 Subject: [PATCH 124/124] input: i8042 - Fix console keyboard support on Gen2
@@ -193,7 +193,7 @@ index 1db0a40..7de98ac 100644
  
 diff --git a/drivers/input/serio/libi8042.c b/drivers/input/serio/libi8042.c
 new file mode 100644
-index 0000000..d19dd96
+index 0000000..fc9a53a
 --- /dev/null
 +++ b/drivers/input/serio/libi8042.c
 @@ -0,0 +1,58 @@
@@ -214,7 +214,7 @@ index 0000000..d19dd96
 +#include <linux/libi8042.h>
 +
 +MODULE_AUTHOR("Vojtech Pavlik <vojtech@suse.cz>");
-+MODULE_DESCRIPTION("i8042 driver shared dependencies"); 
++MODULE_DESCRIPTION("i8042 driver shared dependencies");
 +MODULE_LICENSE("GPL");
 +
 +/*
@@ -227,7 +227,7 @@ index 0000000..d19dd96
 +*/
 +static DEFINE_MUTEX(i8042_mutex);
 +
-+struct i8042_port i8042_ports[I8042_NUM_PORTS]; 
++struct i8042_port i8042_ports[I8042_NUM_PORTS];
 +EXPORT_SYMBOL(i8042_ports);
 +
 +void i8042_lock_chip(void)
@@ -318,7 +318,7 @@ index 0f9bafa..77aed40 100644
  {
 diff --git a/include/linux/libi8042.h b/include/linux/libi8042.h
 new file mode 100644
-index 0000000..6838868
+index 0000000..c07fc2e
 --- /dev/null
 +++ b/include/linux/libi8042.h
 @@ -0,0 +1,51 @@
@@ -365,7 +365,7 @@ index 0000000..6838868
 +
 +static inline void i8042_unlock_chip(void) { }
 +
-+static inline bool i8042_check_port_owner(const struct serio *serio) 
++static inline bool i8042_check_port_owner(const struct serio *serio)
 +{
 +	return false;
 +}
@@ -374,5 +374,5 @@ index 0000000..6838868
 +
 +#endif
 -- 
-2.9.0
+2.9.1
 
