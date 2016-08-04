@@ -71,6 +71,7 @@ Patch0124: 0124-input-i8042-Fix-console-keyboard-support-on-Gen2-Hyp.patch
 Patch1001: 1001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
 Patch1002: 1002-uvc-driver-Add-support-for-F200-color-formats.patch
 Patch1003: 1003-uvc-driver-Add-support-for-R200-color-formats.patch
+Patch1004: 1004-random-give-rdrand-some-credit.patch
 
 # DPDK 16.04 integration
 Patch2001: 2001-dpdk-add-source-files.patch
@@ -152,6 +153,7 @@ Oracle VirtualBox guest additions modules
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
+%patch1004 -p1
 
 # DPDK 16.04 integration
 %patch2001 -p1
