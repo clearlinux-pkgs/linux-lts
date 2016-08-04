@@ -5,9 +5,9 @@
 
 Name:           linux-lts
 Version:        4.4.16
-# Sync Version  4.6.4  # Latest version syncted with linux (-native) package
-Release:        11
-# Sync Release  245    # Latest release syncted with linux (-native) package
+# Sync Version  4.7.0  # Latest version syncted with linux (-native) package
+Release:        12
+# Sync Release  253    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
