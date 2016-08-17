@@ -178,7 +178,8 @@ BuildKernel() {
 
     perl -p -i -e "s/^EXTRAVERSION.*/EXTRAVERSION = ${ExtraVer}/" Makefile
 
-    make -s mrproper
+    #FIXME: Workarround to solve vbox
+    #make -s mrproper
     cp config .config
 
     make -s ARCH=$Arch oldconfig > /dev/null
