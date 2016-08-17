@@ -1,4 +1,4 @@
-From b88c331f4c554805c480800059f13a60b4abc087 Mon Sep 17 00:00:00 2001
+From e9020090bafde4e82615b4ad3aacd2a4fa5c5067 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:15 +0200
 Subject: [PATCH 4008/4010] ahci: Convert driver to use modern PM hooks
@@ -119,5 +119,5 @@ index 60a1583..cb9b353 100644
  	if (is_mcp89_apple(pdev))
  		ahci_mcp89_apple_enable(pdev);
 -- 
-2.9.1
+2.9.2
 

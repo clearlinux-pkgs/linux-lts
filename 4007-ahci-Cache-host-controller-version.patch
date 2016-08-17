@@ -1,4 +1,4 @@
-From 9ba523211ef43dfc7ff871b3cb617a2c51a85aad Mon Sep 17 00:00:00 2001
+From e588565b0376efdc4f2ddaafb3589f0ad96d9315 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:14 +0200
 Subject: [PATCH 4007/4010] ahci: Cache host controller version
@@ -62,5 +62,5 @@ index 9628fa1..bfc107a 100644
  	cap2 = hpriv->cap2;
  	impl = hpriv->port_map;
 -- 
-2.9.1
+2.9.2
 

@@ -1,4 +1,4 @@
-From 3d9f3a3722fa53374cfc8cb1d04bff2c287becab Mon Sep 17 00:00:00 2001
+From 76e88bbb578479f0bf5393dffa3754bd412c1808 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Fri, 25 Sep 2015 19:27:52 -0500
 Subject: [PATCH 2002/2002] dpdk: Integrate Kconfig and Makefiles
@@ -31,5 +31,5 @@ index 900b0c5..aa8afa4 100644
  obj-$(CONFIG_FUJITSU_ES) += fjes/
 +obj-$(CONFIG_DPDK) += dpdk/
 -- 
-2.9.1
+2.9.2
 

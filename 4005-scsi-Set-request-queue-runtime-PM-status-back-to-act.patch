@@ -1,4 +1,4 @@
-From 656348114b4c59a41e0eebb93b1fe679d45fc95c Mon Sep 17 00:00:00 2001
+From a7cfa3455be7cb1a0e7f3fb31aaa3a2756507333 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Thu, 18 Feb 2016 10:54:12 +0200
 Subject: [PATCH 4005/4010] scsi: Set request queue runtime PM status back to
@@ -61,5 +61,5 @@ index 459abe1..b44c1bb 100644
  		async_schedule_domain(fn, dev, &scsi_sd_pm_domain);
  
 -- 
-2.9.1
+2.9.2
 

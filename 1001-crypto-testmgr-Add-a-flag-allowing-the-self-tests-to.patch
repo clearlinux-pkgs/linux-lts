@@ -1,4 +1,4 @@
-From d6bc096043d0c9c31fe117e4c4d7aeb4496518ec Mon Sep 17 00:00:00 2001
+From 36b380df248e680b9dc1015e2a4b7edfdd2c1ca7 Mon Sep 17 00:00:00 2001
 From: "Richard W.M. Jones" <rjones@redhat.com>
 Date: Tue, 3 May 2016 10:00:17 +0100
 Subject: [PATCH 1001/1003] crypto: testmgr - Add a flag allowing the
@@ -62,5 +62,5 @@ index d494431..34bdb91 100644
  
  	if ((type & CRYPTO_ALG_TYPE_MASK) == CRYPTO_ALG_TYPE_CIPHER) {
 -- 
-2.9.1
+2.9.2
 

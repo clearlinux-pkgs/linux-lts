@@ -1,4 +1,4 @@
-From 3b9ad34f82f2c574794196b1c4dc1ba4592dfdf5 Mon Sep 17 00:00:00 2001
+From e639fac691ad87f5a6c7c70b3bf8c6b01ed2038c Mon Sep 17 00:00:00 2001
 From: Tejun Heo <tj@kernel.org>
 Date: Thu, 18 Feb 2016 11:50:37 -0500
 Subject: [PATCH 4002/4010] libata: fix unbalanced
@@ -36,5 +36,5 @@ index e417e1a..567859c 100644
  	if (!dev) {
  		rc = -ENODEV;
 -- 
-2.9.1
+2.9.2
 

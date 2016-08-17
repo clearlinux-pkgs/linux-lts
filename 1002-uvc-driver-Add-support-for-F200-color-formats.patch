@@ -1,4 +1,4 @@
-From bdcdbfc2ae40383cecd061b88f75b6faba106188 Mon Sep 17 00:00:00 2001
+From fbf79e9caea94c2cf56c59ee19cdd0c0ff5ebd4c Mon Sep 17 00:00:00 2001
 From: Plamena Manolova <plamena.manolova@intel.com>
 Date: Fri, 7 Aug 2015 15:55:31 +0100
 Subject: [PATCH 1002/1003] uvc-driver: Add support for F200 color formats.
@@ -107,5 +107,5 @@ index a0e87d1..dcda4e0 100644
  #define V4L2_SDR_FMT_CU8          v4l2_fourcc('C', 'U', '0', '8') /* IQ u8 */
  #define V4L2_SDR_FMT_CU16LE       v4l2_fourcc('C', 'U', '1', '6') /* IQ u16le */
 -- 
-2.9.1
+2.9.2
 
