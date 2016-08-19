@@ -15,6 +15,7 @@ Group:          kernel
 Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.18.tar.xz
 Source1:        config
 Source2:        cmdline
+Source3:        install-vbox-lga
 
 %define kversion %{version}-%{release}.lts
 
@@ -189,6 +190,8 @@ BuildKernel() {
 BuildKernel bzImage
 
 %install
+mkdir -p %{buildroot}/usr/sbin
+install -m 755 %{SOURCE3} %{buildroot}/usr/sbin
 
 InstallKernel() {
     KernelImage=$1
@@ -236,6 +239,7 @@ ln -s org.clearlinux.lts.%{version}-%{release} %{buildroot}/usr/lib/kernel/defau
 /usr/lib/kernel/default-lts
 /usr/lib/modules/%{kversion}/kernel
 /usr/lib/modules/%{kversion}/modules.*
+/usr/sbin/install-vbox-lga
 
 %files extra
 %dir /usr/lib/kernel
