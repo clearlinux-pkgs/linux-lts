@@ -51,20 +51,16 @@ check_root_user ()
     fi
 }
 
-check_vbox_bundle ()
-{
-    if [ ! -f /usr/share/clear/bundles/virtualbox-guest ] ; then
-        die "NO VIRTUALBOX-GUEST BUNDLE FOUND" \
-        "Please use:
-
-        swupd bundle-add virtualbox-guest
-
-        To install virtualbox-guest bundle."
-    fi
-}
-
 check_kernel ()
 {
+    if [ ! -f /usr/share/clear/bundles/kernel-lts ] ; then
+        die "NO KERNEL-LTS BUNDLE FOUND" \
+        "Please use:
+
+        swupd bundle-add kernel-lts
+
+        To install kernel-lts bundle."
+    fi
     if ! uname -r | grep lts &> /dev/null; then
         die "NO LTS KERNEL FOUND" \
         "Please use LTS kernel to support virtualbox modules."
@@ -156,7 +152,6 @@ setup_install ()
 
 check_dialog
 check_root_user
-check_vbox_bundle
 check_kernel
 mount_cdrom
 extract_files
