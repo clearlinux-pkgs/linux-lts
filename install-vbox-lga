@@ -138,6 +138,10 @@ setup_install ()
         sed -i -- 's/setup_modules;/true;/g' ${f}
         # Do not remove old modules, we take care of them
         sed -i -- 's/xargs/true/g' ${f}
+        # Do not add new users
+        sed -i -- 's/useradd/true/g' ${f}
+        # Do not add new group
+        sed -i -- 's/groupadd/true/g' ${f}
     done
     mkdir -p /etc/udev/rules.d
     mkdir -p /etc/ld.so.conf.d
