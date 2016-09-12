@@ -61,7 +61,6 @@ Patch0118: 0118-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
 Patch0119: 0119-Initialize-ata-before-graphics.patch
 Patch0120: 0120-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
 Patch0121: 0121-xor-skip-benchmark-allocations-for-short-circuit-pat.patch
-Patch0122: 0122-input-i8042-Fix-console-keyboard-support-on-Gen2-Hyp.patch
 
 # Serie    XYYY: Extra features modules
 
@@ -139,7 +138,6 @@ Oracle VirtualBox guest additions modules
 %patch0119 -p1
 %patch0120 -p1
 %patch0121 -p1
-%patch0122 -p1
 
 # Serie    XYYY: Extra features modules
 
