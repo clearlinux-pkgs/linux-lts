@@ -66,8 +66,8 @@ Patch0121: 0121-xor-skip-benchmark-allocations-for-short-circuit-pat.patch
 
 # Extra backported features
 Patch1001: 1001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
-Patch1002: 1002-uvc-driver-Add-support-for-F200-color-formats.patch
-Patch1003: 1003-uvc-driver-Add-support-for-R200-color-formats.patch
+#Patch1002: 1002-uvc-driver-Add-support-for-F200-color-formats.patch
+#Patch1003: 1003-uvc-driver-Add-support-for-R200-color-formats.patch
 
 # DPDK 16.04 integration
 Patch2001: 2001-dpdk-add-source-files.patch
@@ -143,8 +143,8 @@ Oracle VirtualBox guest additions modules
 
 # Extra backported features
 %patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
+#%patch1002 -p1
+#%patch1003 -p1
 
 # DPDK 16.04 integration
 %patch2001 -p1
