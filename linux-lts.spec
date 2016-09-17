@@ -35,9 +35,6 @@ BuildRequires:  bison
 %define __strip /bin/true
 
 # Serie    00XX: mainline, CVE, bugfixes patches
-Patch0001: cve-2016-5243.patch
-Patch0002: cve-2016-5243_fix.patch
-Patch0003: cve-2016-5244.patch
 
 # Serie    01XX: Clear Linux patches
 Patch0101: 0101-kvm-silence-kvm-unhandled-rdmsr.patch
@@ -112,9 +109,6 @@ Oracle VirtualBox guest additions modules
 %setup -q -n linux-4.4.21
 
 # Serie    00XX: mainline, CVE, bugfixes patches
-%patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
 
 # Serie    01XX: Clear Linux patches
 %patch0101 -p1
