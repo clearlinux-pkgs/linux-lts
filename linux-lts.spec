@@ -6,7 +6,7 @@
 Name:           linux-lts
 Version:        4.4.21
 # Sync Version  4.7.0  # Latest version syncted with linux (-native) package
-Release:        21
+Release:        22
 # Sync Release  253    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
