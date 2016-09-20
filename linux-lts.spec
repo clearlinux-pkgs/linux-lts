@@ -6,7 +6,7 @@
 Name:           linux-lts
 Version:        4.4.21
 # Sync Version  4.7.0  # Latest version syncted with linux (-native) package
-Release:        22
+Release:        23
 # Sync Release  253    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
@@ -39,7 +39,7 @@ BuildRequires:  bison
 # Serie    01XX: Clear Linux patches
 Patch0101: 0101-kvm-silence-kvm-unhandled-rdmsr.patch
 Patch0102: 0102-i8042-decrease-debug-message-level-to-info.patch
-Patch0103: 0103-net-tcp-reduce-minimal-ack-time-down-from-40-msec.patch
+#Patch0103: 0103-net-tcp-reduce-minimal-ack-time-down-from-40-msec.patch
 Patch0104: 0104-init-do_mounts-recreate-dev-root.patch
 Patch0105: 0105-Increase-the-ext4-default-commit-age.patch
 Patch0106: 0106-silence-rapl.patch
@@ -113,7 +113,7 @@ Oracle VirtualBox guest additions modules
 # Serie    01XX: Clear Linux patches
 %patch0101 -p1
 %patch0102 -p1
-%patch0103 -p1
+#%patch0103 -p1
 %patch0104 -p1
 %patch0105 -p1
 %patch0106 -p1
