@@ -4,15 +4,15 @@
 #
 
 Name:           linux-lts
-Version:        4.4.34
+Version:        4.4.35
 # Sync Version  4.7.0  # Latest version syncted with linux (-native) package
-Release:        26
+Release:        27
 # Sync Release  253    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.34.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.35.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -105,7 +105,7 @@ Group:          kernel
 Oracle VirtualBox guest additions modules
 
 %prep
-%setup -q -n linux-4.4.34
+%setup -q -n linux-4.4.35
 
 # Serie    00XX: mainline, CVE, bugfixes patches
 
