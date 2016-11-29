@@ -6,7 +6,7 @@
 Name:           linux-lts
 Version:        4.4.35
 # Sync Version  4.7.0  # Latest version syncted with linux (-native) package
-Release:        28
+Release:        29
 # Sync Release  253    # Latest release syncted with linux (-native) package
 License:        GPL-2.0
 Summary:        The Linux kernel
@@ -37,6 +37,7 @@ BuildRequires:  bison
 # Serie    00XX: mainline, CVE, bugfixes patches
 
 Patch0071: cve-2016-8632.patch
+Patch0072: cve-2016-8650.patch
 
 # Serie    01XX: Clear Linux patches
 Patch0101: 0101-kvm-silence-kvm-unhandled-rdmsr.patch
@@ -112,6 +113,7 @@ Oracle VirtualBox guest additions modules
 # Serie    00XX: mainline, CVE, bugfixes patches
 
 %patch0071 -p1
+%patch0072 -p1
 
 # Serie    01XX: Clear Linux patches
 %patch0101 -p1
