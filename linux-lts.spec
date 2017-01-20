@@ -4,7 +4,7 @@
 #
 
 Name:           linux-lts
-Version:        4.4.35
+Version:        4.4.44
 # Sync Version  4.7.0  # Latest version syncted with linux (-native) package
 Release:        30
 # Sync Release  253    # Latest release syncted with linux (-native) package
@@ -12,7 +12,7 @@ License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.35.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.44.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -37,9 +37,6 @@ BuildRequires:  bison
 # Serie    00XX: mainline, CVE, bugfixes patches
 
 Patch0071: cve-2016-8632.patch
-Patch0072: cve-2016-8650.patch
-Patch0073: cve-2016-9083.patch
-Patch0074: cve-2016-9084.nopatch
 
 # Serie    01XX: Clear Linux patches
 Patch0101: 0101-kvm-silence-kvm-unhandled-rdmsr.patch
@@ -110,14 +107,11 @@ Group:          kernel
 Oracle VirtualBox guest additions modules
 
 %prep
-%setup -q -n linux-4.4.35
+%setup -q -n linux-4.4.44
 
 # Serie    00XX: mainline, CVE, bugfixes patches
 
 %patch0071 -p1
-%patch0072 -p1
-%patch0073 -p1
-#%patch0074 -p1 No patch, same as 73
 
 # Serie    01XX: Clear Linux patches
 %patch0101 -p1
