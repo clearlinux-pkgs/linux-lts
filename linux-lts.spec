@@ -4,18 +4,17 @@
 #
 
 Name:           linux-lts
-Version:        4.4.49
-# Sync Version  4.7.0  # Latest version syncted with linux (-native) package
-Release:        30
-# Sync Release  253    # Latest release syncted with linux (-native) package
+# note to self: Linus releases need to be named 4.x.0 not 4.x or various
+# things break
+Version:        4.9.10
+Release:        308
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.49.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.10.tar.xz
 Source1:        config
 Source2:        cmdline
-Source3:        install-vbox-lga
 
 %define kversion %{version}-%{release}.lts
 
@@ -28,67 +27,55 @@ BuildRequires:  make >= 3.78
 BuildRequires:  openssl-dev
 BuildRequires:  flex
 BuildRequires:  bison
+BuildRequires:  linux-firmware
 
 # don't srip .ko files!
 %global __os_install_post %{nil}
 %define debug_package %{nil}
 %define __strip /bin/true
 
-# Serie    00XX: mainline, CVE, bugfixes patches
 
-Patch0071: cve-2016-8632.patch
+#    00XY: Mainline patches, upstream backports
+Patch0011: 0011-drm-i915-fbc-sanitize-fbc-GEN-greater-than-9.patch
 
 # Serie    01XX: Clear Linux patches
 Patch0101: 0101-kvm-silence-kvm-unhandled-rdmsr.patch
 Patch0102: 0102-i8042-decrease-debug-message-level-to-info.patch
-Patch0104: 0104-init-do_mounts-recreate-dev-root.patch
-Patch0105: 0105-Increase-the-ext4-default-commit-age.patch
-Patch0106: 0106-silence-rapl.patch
-Patch0107: 0107-pci-pme-wakeups.patch
-Patch0108: 0108-ksm-wakeups.patch
-Patch0109: 0109-intel_idle-tweak-cpuidle-cstates.patch
-Patch0110: 0110-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
-Patch0111: 0111-init_task-faster-timerslack.patch
-Patch0112: 0112-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
-Patch0113: 0113-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
-Patch0114: 0114-overload-on-wakeup.patch
-Patch0115: 0115-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
-Patch0116: 0116-fix-initcall-timestamps.patch
-Patch0117: 0117-smpboot-reuse-timer-calibration.patch
-Patch0118: 0118-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
-Patch0119: 0119-Initialize-ata-before-graphics.patch
-Patch0120: 0120-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
-Patch0121: 0121-xor-skip-benchmark-allocations-for-short-circuit-pat.patch
+Patch0103: 0103-init-do_mounts-recreate-dev-root.patch
+Patch0104: 0104-Increase-the-ext4-default-commit-age.patch
+Patch0105: 0105-silence-rapl.patch
+Patch0106: 0106-pci-pme-wakeups.patch
+Patch0107: 0107-ksm-wakeups.patch
+Patch0108: 0108-intel_idle-tweak-cpuidle-cstates.patch
+Patch0109: 0109-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
+Patch0110: 0110-init_task-faster-timerslack.patch
+Patch0111: 0111-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
+Patch0112: 0112-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
+Patch0113: 0113-overload-on-wakeup.patch
+Patch0114: 0114-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
+Patch0115: 0115-fix-initcall-timestamps.patch
+Patch0116: 0116-smpboot-reuse-timer-calibration.patch
+Patch0117: 0117-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
+Patch0118: 0118-Initialize-ata-before-graphics.patch
+Patch0119: 0119-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
+Patch0120: 0120-give-rdrand-some-credit.patch
+Patch0121: 0121-e1000e-change-default-policy.patch
+Patch0122: 0122-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
+Patch0123: 0123-igb-no-runtime-pm-to-fix-reboot-oops.patch
+Patch0124: 0124-tweak-perfbias.patch
 
 # Serie    XYYY: Extra features modules
 
-# Extra backported features
-Patch1001: 1001-crypto-testmgr-Add-a-flag-allowing-the-self-tests-to.patch
-#Patch1002: 1002-uvc-driver-Add-support-for-F200-color-formats.patch
-#Patch1003: 1003-uvc-driver-Add-support-for-R200-color-formats.patch
-
-# DPDK 16.04 integration
-Patch2001: 2001-dpdk-add-source-files.patch
-Patch2002: 2002-dpdk-Integrate-Kconfig-and-Makefiles.patch
-
-# virtualbox modules
-Patch3001: 3001-virtualbox-add-module-sources.patch
-Patch3002: 3002-virtualbox-setup-Kconfig-and-Makefiles.patch
-
-# 4.6 sata backports
-Patch4001: 4001-libata-support-AHCI-on-OCTEON-platform.patch
-Patch4002: 4002-libata-fix-unbalanced-spin_lock_irqsave-spin_unlock_.patch
-Patch4003: 4003-ata-ahci_mvebu-add-support-for-Armada-3700-variant.patch
-Patch4004: 4004-block-Add-blk_set_runtime_active.patch
-Patch4005: 4005-scsi-Set-request-queue-runtime-PM-status-back-to-act.patch
-Patch4006: 4006-scsi-Drop-runtime-PM-usage-count-after-host-is-added.patch
-Patch4007: 4007-ahci-Cache-host-controller-version.patch
-Patch4008: 4008-ahci-Convert-driver-to-use-modern-PM-hooks.patch
-Patch4009: 4009-ahci-Add-functions-to-manage-runtime-PM-of-AHCI-port.patch
-Patch4010: 4010-ahci-Add-runtime-PM-support-for-the-host-controller.patch
-
 %description
 The Linux kernel.
+
+%package dev
+License:        GPL-2.0
+Summary:        The Linux kernel
+Group:          kernel
+
+%description dev
+Linux kernel install script
 
 %package extra
 License:        GPL-2.0
@@ -98,24 +85,18 @@ Group:          kernel
 %description extra
 Linux kernel extra files
 
-%package vboxguest-modules
-License:        GPL-2.0
-Summary:        Oracle VirtualBox guest additions modules
-Group:          kernel
-
-%description vboxguest-modules
-Oracle VirtualBox guest additions modules
-
 %prep
-%setup -q -n linux-4.4.49
+%setup -q -n linux-4.9.10
 
-# Serie    00XX: mainline, CVE, bugfixes patches
+#     000X  cve, bugfixes patches
 
-%patch0071 -p1
+#     00XY  Mainline patches, upstream backports
+%patch0011 -p1
 
-# Serie    01XX: Clear Linux patches
+#     01XX  Clear Linux patches
 %patch0101 -p1
 %patch0102 -p1
+%patch0103 -p1
 %patch0104 -p1
 %patch0105 -p1
 %patch0106 -p1
@@ -134,35 +115,16 @@ Oracle VirtualBox guest additions modules
 %patch0119 -p1
 %patch0120 -p1
 %patch0121 -p1
+%patch0122 -p1
+%patch0123 -p1
+%patch0124 -p1
 
 # Serie    XYYY: Extra features modules
 
-# Extra backported features
-%patch1001 -p1
-#%patch1002 -p1
-#%patch1003 -p1
-
-# DPDK 16.04 integration
-%patch2001 -p1
-%patch2002 -p1
-
-# virtualbox modules
-%patch3001 -p1
-%patch3002 -p1
-
-# sata PM backports
-%patch4001 -p1
-%patch4002 -p1
-%patch4003 -p1
-%patch4004 -p1
-%patch4005 -p1
-%patch4006 -p1
-%patch4007 -p1
-%patch4008 -p1
-%patch4009 -p1
-%patch4010 -p1
-
 cp %{SOURCE1} .
+
+cp -a /usr/lib/firmware/i915 firmware/
+cp -a /usr/lib/firmware/intel-ucode firmware/
 
 %build
 BuildKernel() {
@@ -173,8 +135,7 @@ BuildKernel() {
 
     perl -p -i -e "s/^EXTRAVERSION.*/EXTRAVERSION = ${ExtraVer}/" Makefile
 
-    #FIXME: Workarround to solve vbox
-    #make -s mrproper
+    make -s mrproper
     cp config .config
 
     make -s ARCH=$Arch oldconfig > /dev/null
@@ -185,7 +146,6 @@ BuildKernel bzImage
 
 %install
 mkdir -p %{buildroot}/usr/sbin
-install -m 755 %{SOURCE3} %{buildroot}/usr/sbin
 
 InstallKernel() {
     KernelImage=$1
@@ -233,11 +193,7 @@ ln -s org.clearlinux.lts.%{version}-%{release} %{buildroot}/usr/lib/kernel/defau
 /usr/lib/kernel/default-lts
 /usr/lib/modules/%{kversion}/kernel
 /usr/lib/modules/%{kversion}/modules.*
-/usr/sbin/install-vbox-lga
 
 %files extra
 %dir /usr/lib/kernel
 /usr/lib/kernel/System.map-%{kversion}
-
-%files vboxguest-modules
-%dir /usr/lib/kernel
