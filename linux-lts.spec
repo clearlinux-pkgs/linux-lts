@@ -13,6 +13,7 @@ Group:          kernel
 Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.12.tar.xz
 Source1:        config
 Source2:        cmdline
+Source3:        install-vbox-lga
 
 %define kversion %{version}-%{release}.lts
 
@@ -65,6 +66,10 @@ Patch0123: 0123-igb-no-runtime-pm-to-fix-reboot-oops.patch
 Patch0124: 0124-tweak-perfbias.patch
 
 # Serie    XYYY: Extra features modules
+#          200Y: VirtualBox modules
+Patch2001: 2001-virtualbox-add-module-sources.patch
+Patch2002: 2002-virtualbox-setup-Kconfig-and-Makefiles.patch
+
 
 %description
 The Linux kernel.
@@ -112,7 +117,10 @@ Linux kernel extra files
 %patch0123 -p1
 %patch0124 -p1
 
-# Serie    XYYY: Extra features modules
+#     XYYY: Extra features modules
+#     200Y: VirtualBox modules
+%patch2001 -p1
+%patch2002 -p1
 
 cp %{SOURCE1} .
 
@@ -139,6 +147,7 @@ BuildKernel bzImage
 
 %install
 mkdir -p %{buildroot}/usr/sbin
+install -m 755 %{SOURCE3} %{buildroot}/usr/sbin
 
 InstallKernel() {
     KernelImage=$1
@@ -186,6 +195,7 @@ ln -s org.clearlinux.lts.%{version}-%{release} %{buildroot}/usr/lib/kernel/defau
 /usr/lib/kernel/default-lts
 /usr/lib/modules/%{kversion}/kernel
 /usr/lib/modules/%{kversion}/modules.*
+/usr/sbin/install-vbox-lga
 
 %files extra
 %dir /usr/lib/kernel
