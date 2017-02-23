@@ -1,4 +1,4 @@
-From fea02c38c4ec8a2c76c29f43cdfdf69796e967db Mon Sep 17 00:00:00 2001
+From a5de04044d428bf54472365e7dc07958aa184daf Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 14 Mar 2016 11:06:46 -0600
 Subject: [PATCH 107/124] ksm-wakeups
@@ -30,5 +30,5 @@ index 9ae6011a41f8..eecd3ff669e2 100644
  			wait_event_freezable(ksm_thread_wait,
  				ksmd_should_run() || kthread_should_stop());
 -- 
-2.11.0
+2.11.1
 

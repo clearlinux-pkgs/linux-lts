@@ -1,4 +1,4 @@
-From 036a2923c80f2dd2208a07a8975e6a44f0d929ed Mon Sep 17 00:00:00 2001
+From 1f44219cd74f5c3b97e2c85af87141e1bddf0555 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 14 Mar 2016 11:10:58 -0600
 Subject: [PATCH 106/124] pci pme wakeups
@@ -23,5 +23,5 @@ index eda6a7cf0e54..82a623255059 100644
  static void pci_dev_d3_sleep(struct pci_dev *dev)
  {
 -- 
-2.11.0
+2.11.1
 

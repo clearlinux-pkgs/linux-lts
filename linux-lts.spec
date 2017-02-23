@@ -4,15 +4,13 @@
 #
 
 Name:           linux-lts
-# note to self: Linus releases need to be named 4.x.0 not 4.x or various
-# things break
-Version:        4.9.10
-Release:        308
+Version:        4.9.11
+Release:        309
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.10.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.11.tar.xz
 Source1:        config
 Source2:        cmdline
 
@@ -22,18 +20,20 @@ BuildRequires:  bash >= 2.03
 BuildRequires:  bc
 BuildRequires:  binutils-dev
 BuildRequires:  elfutils-dev
-BuildRequires:  kmod
 BuildRequires:  make >= 3.78
 BuildRequires:  openssl-dev
 BuildRequires:  flex
 BuildRequires:  bison
+BuildRequires:  kmod
 BuildRequires:  linux-firmware
 
-# don't srip .ko files!
+# don't strip .ko files!
 %global __os_install_post %{nil}
 %define debug_package %{nil}
 %define __strip /bin/true
 
+#    000X: cve, bugfixes patches
+Patch0001: cve-2017-2596.patch
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-drm-i915-fbc-sanitize-fbc-GEN-greater-than-9.patch
@@ -69,14 +69,6 @@ Patch0124: 0124-tweak-perfbias.patch
 %description
 The Linux kernel.
 
-%package dev
-License:        GPL-2.0
-Summary:        The Linux kernel
-Group:          kernel
-
-%description dev
-Linux kernel install script
-
 %package extra
 License:        GPL-2.0
 Summary:        The Linux kernel extra files
@@ -86,9 +78,10 @@ Group:          kernel
 Linux kernel extra files
 
 %prep
-%setup -q -n linux-4.9.10
+%setup -q -n linux-4.9.11
 
 #     000X  cve, bugfixes patches
+%patch0001 -p1
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
@@ -166,18 +159,18 @@ InstallKernel() {
 
     rm -f %{buildroot}/usr/lib/modules/$KernelVer/build
     rm -f %{buildroot}/usr/lib/modules/$KernelVer/source
+
+    # Erase some modules index
+    for i in alias ccwmap dep ieee1394map inputmap isapnpmap ofmap pcimap seriomap symbols usbmap softdep devname
+    do
+        rm -f %{buildroot}/usr/lib/modules/${KernelVer}/modules.${i}*
+    done
+    rm -f %{buildroot}/usr/lib/modules/${KernelVer}/modules.*.bin
 }
 
 InstallKernel arch/x86/boot/bzImage
 
 rm -rf %{buildroot}/usr/lib/firmware
-
-# Erase some modules index and then re-crate them
-for i in alias ccwmap dep ieee1394map inputmap isapnpmap ofmap pcimap seriomap symbols usbmap softdep devname
-do
-    rm -f %{buildroot}/usr/lib/modules/%{kversion}/modules.${i}*
-done
-rm -f %{buildroot}/usr/lib/modules/%{kversion}/modules.*.bin
 
 # Recreate modules indices
 depmod -a -b %{buildroot}/usr %{kversion}

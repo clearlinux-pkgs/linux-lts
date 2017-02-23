@@ -1,4 +1,4 @@
-From 486dc26f9671ae80c3f933a2bf6d15619c1ca995 Mon Sep 17 00:00:00 2001
+From 16104411cc5a7b20f310e3ecede85343ee6ce6b9 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Wed, 11 Feb 2015 17:28:14 -0600
 Subject: [PATCH 116/124] smpboot: reuse timer calibration
@@ -27,5 +27,5 @@ index 46b2f41f8b05..88553c1f21f1 100644
  		return 0;
  
 -- 
-2.11.0
+2.11.1
 
