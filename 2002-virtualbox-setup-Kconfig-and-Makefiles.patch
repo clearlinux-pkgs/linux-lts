@@ -1,15 +1,18 @@
-From 9245043ee6cd6b9601b1506a4c1b2c998fb40ac4 Mon Sep 17 00:00:00 2001
+From 62c7eeebce5d67b9e488b182deeb1fb6f0a8c4a9 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Thu, 23 Feb 2017 13:50:15 -0600
 Subject: [PATCH 2002/2002] virtualbox: setup Kconfig and Makefiles
 
 ---
- drivers/misc/Kconfig            | 31 +++++++++++++++++++++++++++++++
- drivers/misc/Makefile           |  3 +++
- drivers/misc/vboxguest/Makefile |  1 +
- drivers/misc/vboxsf/Makefile    |  1 +
- drivers/misc/vboxvideo/Makefile |  1 +
- 5 files changed, 37 insertions(+)
+ drivers/misc/Kconfig                           | 31 ++++++++++++++++++++++++++
+ drivers/misc/Makefile                          |  3 +++
+ drivers/misc/vboxguest/Makefile                |  1 +
+ drivers/misc/vboxguest/Makefile.include.header |  2 +-
+ drivers/misc/vboxsf/Makefile                   |  1 +
+ drivers/misc/vboxsf/Makefile.include.header    |  2 +-
+ drivers/misc/vboxvideo/Makefile                |  1 +
+ drivers/misc/vboxvideo/Makefile.include.header |  2 +-
+ 8 files changed, 40 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
 index 64971baf11fa..90e1aff41bac 100644
@@ -79,6 +82,19 @@ index b40364795729..5235d0de9777 100644
  
  MOD_NAME = vboxguest
  
+diff --git a/drivers/misc/vboxguest/Makefile.include.header b/drivers/misc/vboxguest/Makefile.include.header
+index a9bc16878eb0..315ec3542086 100644
+--- a/drivers/misc/vboxguest/Makefile.include.header
++++ b/drivers/misc/vboxguest/Makefile.include.header
+@@ -82,7 +82,7 @@ endif
+ 
+ ifneq ($(MAKECMDGOALS),clean)
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
 diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
 index 97f2080afc62..e30e8b9274f4 100644
 --- a/drivers/misc/vboxsf/Makefile
@@ -91,6 +107,19 @@ index 97f2080afc62..e30e8b9274f4 100644
  
  MOD_NAME = vboxsf
  MOD_OBJS   = \
+diff --git a/drivers/misc/vboxsf/Makefile.include.header b/drivers/misc/vboxsf/Makefile.include.header
+index a9bc16878eb0..315ec3542086 100644
+--- a/drivers/misc/vboxsf/Makefile.include.header
++++ b/drivers/misc/vboxsf/Makefile.include.header
+@@ -82,7 +82,7 @@ endif
+ 
+ ifneq ($(MAKECMDGOALS),clean)
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
 index 2869925b948b..cefc59f1572a 100644
 --- a/drivers/misc/vboxvideo/Makefile
@@ -103,6 +132,19 @@ index 2869925b948b..cefc59f1572a 100644
  
  MOD_NAME   = vboxvideo
  
+diff --git a/drivers/misc/vboxvideo/Makefile.include.header b/drivers/misc/vboxvideo/Makefile.include.header
+index a9bc16878eb0..315ec3542086 100644
+--- a/drivers/misc/vboxvideo/Makefile.include.header
++++ b/drivers/misc/vboxvideo/Makefile.include.header
+@@ -82,7 +82,7 @@ endif
+ 
+ ifneq ($(MAKECMDGOALS),clean)
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
 -- 
 2.11.1
 
