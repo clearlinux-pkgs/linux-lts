@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.9.13
-Release:        310
+Release:        311
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/

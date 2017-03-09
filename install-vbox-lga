@@ -105,6 +105,7 @@ umount_cdrom ()
 extract_files ()
 {
     rm -rf /tmp/vblga
+    mkdir --mode=700 /tmp/vblga
     /mnt/cdrom-vbox/VBoxLinuxAdditions.run --noexec --keep --nox11 --target /tmp/vblga
     if [ ! -f /tmp/vblga/routines.sh ] ; then
         umount_cdrom
@@ -152,6 +153,11 @@ setup_install ()
     and then 'startx'"
 }
 
+remove_tmp_files ()
+{
+    rm -rf /tmp/vblga
+}
+
 ####################  main  #################### 
 
 check_dialog
@@ -163,3 +169,4 @@ umount_cdrom
 patch_systemd
 run_install
 setup_install
+remove_tmp_files
