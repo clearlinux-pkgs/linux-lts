@@ -21,6 +21,8 @@
 IS_DIALOG=0
 VBOXGA_FOUND=0
 
+TMPDIR=$(mktemp -d)
+
 # Developed againts VirtualBox 5.1.2 Guest Additions installer image
 
 die ()
@@ -104,10 +106,8 @@ umount_cdrom ()
 
 extract_files ()
 {
-    rm -rf /tmp/vblga
-    mkdir --mode=700 /tmp/vblga
-    /mnt/cdrom-vbox/VBoxLinuxAdditions.run --noexec --keep --nox11 --target /tmp/vblga
-    if [ ! -f /tmp/vblga/routines.sh ] ; then
+    /mnt/cdrom-vbox/VBoxLinuxAdditions.run --noexec --keep --nox11 --target ${TMPDIR}
+    if [ ! -f ${TMPDIR}/routines.sh ] ; then
         umount_cdrom
         die "VBOX Files not Found" "Can not find VirtualBox install files ..."
     fi
@@ -117,15 +117,15 @@ patch_systemd ()
 {
     # Create a "user" installation instead a "system" installation
     mkdir -p /etc/systemd/system
-    sed -i -- 's/lib/etc/g' /tmp/vblga/routines.sh
+    sed -i -- 's/lib/etc/g' ${TMPDIR}/routines.sh
 }
 
 run_install ()
 {
-    if [ ! -x /tmp/vblga/install.sh ] ; then
+    if [ ! -x ${TMPDIR}/install.sh ] ; then
         die "VBOX Files not Found" "Can not find VirtualBox install files ..."
     fi
-    cd /tmp/vblga
+    cd ${TMPDIR}
     ./install.sh ./install.sh install --no-setup
 }
 
@@ -155,7 +155,7 @@ setup_install ()
 
 remove_tmp_files ()
 {
-    rm -rf /tmp/vblga
+    rm -rf ${TMPDIR}
 }
 
 ####################  main  #################### 
