@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.9.17
-Release:        317
+Release:        318
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -65,6 +65,12 @@ Patch0122: 0122-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
 Patch0123: 0123-igb-no-runtime-pm-to-fix-reboot-oops.patch
 Patch0124: 0124-tweak-perfbias.patch
 
+# Clear Linux KVM Memory Optimization
+Patch0151: 0151-mm-Export-do_madvise.patch
+Patch0152: 0152-x86-kvm-Notify-host-to-release-pages.patch
+Patch0153: 0153-x86-Return-memory-from-guest-to-host-kernel.patch
+Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
+
 # Serie    XYYY: Extra features modules
 #          200Y: VirtualBox modules
 Patch2001: 2001-virtualbox-add-module-sources.patch
@@ -116,6 +122,12 @@ Linux kernel extra files
 %patch0122 -p1
 %patch0123 -p1
 %patch0124 -p1
+
+# Clear Linux KVM Memory Optimization
+%patch0151 -p1
+%patch0152 -p1
+%patch0153 -p1
+%patch0154 -p1
 
 #     XYYY: Extra features modules
 #     200Y: VirtualBox modules
