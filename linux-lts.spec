@@ -50,7 +50,7 @@ Patch0107: 0107-ksm-wakeups.patch
 Patch0108: 0108-intel_idle-tweak-cpuidle-cstates.patch
 Patch0109: 0109-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
 Patch0110: 0110-init_task-faster-timerslack.patch
-Patch0111: 0111-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
+#Patch0111: 0111-KVM-x86-Add-hypercall-KVM_HC_RETURN_MEM.patch
 Patch0112: 0112-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
 Patch0113: 0113-overload-on-wakeup.patch
 Patch0114: 0114-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
@@ -102,7 +102,7 @@ Linux kernel extra files
 %patch0108 -p1
 %patch0109 -p1
 %patch0110 -p1
-%patch0111 -p1
+#%patch0111 -p1
 %patch0112 -p1
 %patch0113 -p1
 %patch0114 -p1
