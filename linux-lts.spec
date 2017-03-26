@@ -4,13 +4,13 @@
 #
 
 Name:           linux-lts
-Version:        4.9.17
-Release:        318
+Version:        4.9.18
+Release:        319
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.17.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.18.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -89,7 +89,7 @@ Group:          kernel
 Linux kernel extra files
 
 %prep
-%setup -q -n linux-4.9.17
+%setup -q -n linux-4.9.18
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
