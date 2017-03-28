@@ -1,0 +1,24 @@
+From 36fee3b83c20936a28f4c6a518278a5e5e31d63d Mon Sep 17 00:00:00 2001
+From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
+Date: Tue, 28 Mar 2017 17:12:55 -0600
+Subject: [PATCH 1002/1002] fpga: add AAL to fpga Kconfig
+
+Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
+---
+ drivers/fpga/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/fpga/Kconfig b/drivers/fpga/Kconfig
+index cd84934774cc..4d8901c615c3 100644
+--- a/drivers/fpga/Kconfig
++++ b/drivers/fpga/Kconfig
+@@ -28,4 +28,6 @@ config FPGA_MGR_ZYNQ_FPGA
+ 
+ endif # FPGA
+ 
++source "drivers/fpga/aal/Kconfig"
++
+ endmenu
+-- 
+2.12.2
+

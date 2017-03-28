@@ -72,6 +72,9 @@ Patch0153: 0153-x86-Return-memory-from-guest-to-host-kernel.patch
 Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
 
 # Serie    XYYY: Extra features modules
+#    100X: Accelertor Abstraction Layer (AAL)
+Patch1001: 1001-fpga-add-AAL.patch
+Patch1001: 1002-fpga-add-AAL-to-fpga-Kconfig.patch
 #          200Y: VirtualBox modules
 Patch2001: 2001-virtualbox-add-module-sources.patch
 Patch2002: 2002-virtualbox-setup-Kconfig-and-Makefiles.patch
@@ -130,6 +133,9 @@ Linux kernel extra files
 %patch0154 -p1
 
 #     XYYY: Extra features modules
+#     100X  Accelertor Abstraction Layer (AAL)
+%patch1001 -p1
+%patch1002 -p1
 #     200Y: VirtualBox modules
 %patch2001 -p1
 %patch2002 -p1
