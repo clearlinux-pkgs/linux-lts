@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.9.18
-Release:        320
+Release:        321
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -63,6 +63,7 @@ Patch0121: 0121-e1000e-change-default-policy.patch
 Patch0122: 0122-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
 Patch0123: 0123-igb-no-runtime-pm-to-fix-reboot-oops.patch
 Patch0124: 0124-tweak-perfbias.patch
+Patch0125: 0125-e1000e-increase-pause-and-refresh-time.patch
 
 # Clear Linux KVM Memory Optimization
 Patch0151: 0151-mm-Export-do_madvise.patch
@@ -123,6 +124,7 @@ Linux kernel extra files
 %patch0122 -p1
 %patch0123 -p1
 %patch0124 -p1
+%patch0125 -p1
 
 # Clear Linux KVM Memory Optimization
 %patch0151 -p1
