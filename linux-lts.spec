@@ -35,8 +35,6 @@ BuildRequires:  linux-firmware
 
 #    000X: cve, bugfixes patches
 Patch0001: cve-2017-2596.patch
-Patch0002: cve-2017-7184.patch
-Patch0003: cve-2017-7184_2.patch
 Patch0004: cve-2017-7294.patch
 
 #    00XY: Mainline patches, upstream backports
@@ -99,8 +97,6 @@ Linux kernel extra files
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
 %patch0004 -p1
 
 #     00XY  Mainline patches, upstream backports
