@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.9.22
-Release:        327
+Release:        328
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -35,7 +35,6 @@ BuildRequires:  linux-firmware
 
 #    000X: cve, bugfixes patches
 Patch0001: cve-2017-2596.patch
-Patch0004: cve-2017-7294.patch
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-drm-i915-fbc-sanitize-fbc-GEN-greater-than-9.patch
@@ -97,7 +96,6 @@ Linux kernel extra files
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
-%patch0004 -p1
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
