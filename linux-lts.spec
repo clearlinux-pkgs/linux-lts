@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.9.27
-Release:        336
+Release:        337
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -72,7 +72,7 @@ Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
 
 # Serie    XYYY: Extra features modules
 #    100X: Accelertor Abstraction Layer (AAL)
-Patch1001: 1001-fpga-add-AAL.patch
+Patch1001: 1001-fpga-add-AAL-6.3.1.patch
 Patch1002: 1002-fpga-add-AAL-to-fpga-Kconfig.patch
 #          200Y: VirtualBox modules
 Patch2001: 2001-virtualbox-add-module-sources.patch
