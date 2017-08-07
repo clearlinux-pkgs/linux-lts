@@ -4,13 +4,13 @@
 #
 
 Name:           linux-lts
-Version:        4.9.40
-Release:        353
+Version:        4.9.41
+Release:        354
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.40.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.41.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -91,7 +91,7 @@ Group:          kernel
 Linux kernel extra files
 
 %prep
-%setup -q -n linux-4.9.40
+%setup -q -n linux-4.9.41
 
 #     000X  cve, bugfixes patches
 
