@@ -1,4 +1,4 @@
-From 2c145b5233b504f5226a0f4bc44baeef33b444d8 Mon Sep 17 00:00:00 2001
+From 77fd996a8108d1fdb4618310787dd40788836ef8 Mon Sep 17 00:00:00 2001
 From: Sebastien Boeuf <sebastien.boeuf@intel.com>
 Date: Mon, 23 Jan 2017 15:32:39 -0800
 Subject: [PATCH 154/154] sysctl: vm: Fine-grained cache shrinking
@@ -79,10 +79,10 @@ index d72d52b90433..f564dfcc13a4 100644
 +	return 0;
 +}
 diff --git a/include/linux/mm.h b/include/linux/mm.h
-index 833f23d98baa..0bb66c1c31c9 100644
+index 0cb6589eee2c..2d9e5bb46135 100644
 --- a/include/linux/mm.h
 +++ b/include/linux/mm.h
-@@ -2308,6 +2308,10 @@ extern int kvm_ret_mem_advice;
+@@ -2305,6 +2305,10 @@ extern int kvm_ret_mem_advice;
  int kvm_madv_instant_free_sysctl_handler(struct ctl_table *table, int write,
  					 void __user *buffer, size_t *length,
  					 loff_t *ppos);
@@ -94,10 +94,10 @@ index 833f23d98baa..0bb66c1c31c9 100644
  
  void drop_slab(void);
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index d8ae774fa042..5dc9a46ae212 100644
+index 2241e11bed04..17ca31514a01 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
-@@ -1405,6 +1405,14 @@ static struct ctl_table vm_table[] = {
+@@ -1407,6 +1407,14 @@ static struct ctl_table vm_table[] = {
  		.mode		= 0644,
  		.proc_handler	= kvm_madv_instant_free_sysctl_handler,
  	},
@@ -133,5 +133,5 @@ index 30a88b945a44..1198e74d1860 100644
  /* It's optimal to keep kswapds on the same CPUs as their memory, but
     not required for correctness.  So if the last cpu in a node goes
 -- 
-2.12.1
+2.14.2
 

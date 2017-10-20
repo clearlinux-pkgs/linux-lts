@@ -1,4 +1,4 @@
-From 838abc7e5f43ea40a2cc05ebd6c7321b6d84b057 Mon Sep 17 00:00:00 2001
+From 5e9e63d6c614ee5edf5768514ba90e912028efd6 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Fri, 20 Nov 2015 14:01:26 -0600
 Subject: [PATCH 103/124] init: do_mounts: recreate /dev/root
@@ -38,5 +38,5 @@ index dea5de95c2dd..d74a346b2dfa 100644
  
  static bool is_tmpfs;
 -- 
-2.11.1
+2.14.2
 

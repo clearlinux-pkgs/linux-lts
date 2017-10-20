@@ -1,4 +1,4 @@
-From 4170571f7bb0897c90e13b2fcf3ee06990a9e774 Mon Sep 17 00:00:00 2001
+From fad9b9bd61e47b7a6e6bbc7ecf0bcf76fba2ad5d Mon Sep 17 00:00:00 2001
 From: Alan Cox <alan@linux.intel.com>
 Date: Thu, 10 Mar 2016 15:11:28 +0000
 Subject: [PATCH 109/124] xattr: allow setting user.* attributes on symlinks by
@@ -24,7 +24,7 @@ Signed-off-by: Alan Cox <alan@linux.intel.com>
  1 file changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/fs/xattr.c b/fs/xattr.c
-index 2d13b4e62fae..580a5aeddfd2 100644
+index 932b9061a3a2..c01fc881d775 100644
 --- a/fs/xattr.c
 +++ b/fs/xattr.c
 @@ -118,15 +118,17 @@ xattr_permission(struct inode *inode, const char *name, int mask)
@@ -52,5 +52,5 @@ index 2d13b4e62fae..580a5aeddfd2 100644
  	}
  
 -- 
-2.11.1
+2.14.2
 

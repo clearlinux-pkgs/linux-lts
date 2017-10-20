@@ -1,4 +1,4 @@
-From 62c7eeebce5d67b9e488b182deeb1fb6f0a8c4a9 Mon Sep 17 00:00:00 2001
+From c06e2bffb108be632baf513ea5ece78b46d8ec99 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Thu, 23 Feb 2017 13:50:15 -0600
 Subject: [PATCH 2002/2002] virtualbox: setup Kconfig and Makefiles
@@ -121,7 +121,7 @@ index a9bc16878eb0..315ec3542086 100644
   #
   # building from this directory
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
-index 2869925b948b..cefc59f1572a 100644
+index 3612b5c5cf6f..03b199d7e97b 100644
 --- a/drivers/misc/vboxvideo/Makefile
 +++ b/drivers/misc/vboxvideo/Makefile
 @@ -20,6 +20,7 @@
@@ -146,5 +146,5 @@ index a9bc16878eb0..315ec3542086 100644
   #
   # building from this directory
 -- 
-2.11.1
+2.14.2
 

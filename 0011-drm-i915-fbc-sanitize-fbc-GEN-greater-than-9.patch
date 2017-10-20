@@ -1,4 +1,4 @@
-From 07639791f247ae7a807444106b9b7611f070d02b Mon Sep 17 00:00:00 2001
+From 4a68e2f8528f90814580fa7b5cd306fac84dc3bd Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Fri, 6 Jan 2017 13:28:29 +0000
 Subject: [PATCH] drm/i915/fbc: sanitize fbc GEN greater than 9
@@ -21,5 +21,5 @@ index c43dd9abce79..f5a2560840f3 100644
  
  	return 0;
 -- 
-2.11.1
+2.14.2
 

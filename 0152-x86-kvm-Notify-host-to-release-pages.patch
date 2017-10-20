@@ -1,4 +1,4 @@
-From d28921b5f797829e4e676f7968ae688ef96b7992 Mon Sep 17 00:00:00 2001
+From 240d2b3459a4bfd7915ec2f61f12e5cd562933d1 Mon Sep 17 00:00:00 2001
 From: Sebastien Boeuf <sebastien.boeuf@intel.com>
 Date: Mon, 23 Jan 2017 15:08:55 -0800
 Subject: [PATCH 152/154] x86: kvm: Notify host to release pages
@@ -42,7 +42,7 @@ Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
  create mode 100644 mm/kvm.c
 
 diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-index 582c75311f95..683a94dd5f03 100644
+index ae5237dc89c0..f90e637a27dd 100644
 --- a/arch/x86/kvm/x86.c
 +++ b/arch/x86/kvm/x86.c
 @@ -46,6 +46,7 @@
@@ -53,7 +53,7 @@ index 582c75311f95..683a94dd5f03 100644
  #include <linux/perf_event.h>
  #include <linux/uaccess.h>
  #include <linux/hash.h>
-@@ -6019,6 +6020,19 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
+@@ -6047,6 +6048,19 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
  	kvm_irq_delivery_to_apic(kvm, NULL, &lapic_irq, NULL);
  }
  
@@ -73,7 +73,7 @@ index 582c75311f95..683a94dd5f03 100644
  void kvm_vcpu_deactivate_apicv(struct kvm_vcpu *vcpu)
  {
  	vcpu->arch.apicv_active = false;
-@@ -6065,6 +6079,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
+@@ -6093,6 +6107,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
  		kvm_pv_kick_cpu_op(vcpu->kvm, a0, a1);
  		ret = 0;
  		break;
@@ -84,10 +84,10 @@ index 582c75311f95..683a94dd5f03 100644
  		ret = -KVM_ENOSYS;
  		break;
 diff --git a/include/linux/mm.h b/include/linux/mm.h
-index 925ec25f99a8..833f23d98baa 100644
+index eb5757be46f6..0cb6589eee2c 100644
 --- a/include/linux/mm.h
 +++ b/include/linux/mm.h
-@@ -2303,6 +2303,11 @@ extern bool process_shares_mm(struct task_struct *p, struct mm_struct *mm);
+@@ -2300,6 +2300,11 @@ extern bool process_shares_mm(struct task_struct *p, struct mm_struct *mm);
  extern int sysctl_drop_caches;
  int drop_caches_sysctl_handler(struct ctl_table *, int,
  					void __user *, size_t *, loff_t *);
@@ -114,10 +114,10 @@ index bf6cd7d5cac2..7d90f77d87d0 100644
  /*
   * hypercalls use architecture specific
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index c1095cdc0fe2..d8ae774fa042 100644
+index 24d603d29512..2241e11bed04 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
-@@ -1398,6 +1398,13 @@ static struct ctl_table vm_table[] = {
+@@ -1400,6 +1400,13 @@ static struct ctl_table vm_table[] = {
  		.extra1		= &one,
  		.extra2		= &four,
  	},
@@ -176,5 +176,5 @@ index 000000000000..8945f6a311b9
 +	return 0;
 +}
 -- 
-2.12.1
+2.14.2
 

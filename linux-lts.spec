@@ -4,13 +4,13 @@
 #
 
 Name:           linux-lts
-Version:        4.9.46
-Release:        360
+Version:        4.9.57
+Release:        361
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.46.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.57.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -50,20 +50,20 @@ Patch0107: 0107-ksm-wakeups.patch
 Patch0108: 0108-intel_idle-tweak-cpuidle-cstates.patch
 Patch0109: 0109-xattr-allow-setting-user.-attributes-on-symlinks-by-.patch
 Patch0110: 0110-init_task-faster-timerslack.patch
-Patch0112: 0112-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
-Patch0113: 0113-overload-on-wakeup.patch
-Patch0114: 0114-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
-Patch0115: 0115-fix-initcall-timestamps.patch
-Patch0116: 0116-smpboot-reuse-timer-calibration.patch
-Patch0117: 0117-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
-Patch0118: 0118-Initialize-ata-before-graphics.patch
-Patch0119: 0119-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
-Patch0120: 0120-give-rdrand-some-credit.patch
-Patch0121: 0121-e1000e-change-default-policy.patch
-Patch0122: 0122-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
-Patch0123: 0123-igb-no-runtime-pm-to-fix-reboot-oops.patch
-Patch0124: 0124-tweak-perfbias.patch
-Patch0125: 0125-e1000e-increase-pause-and-refresh-time.patch
+Patch0111: 0111-fs-ext4-fsync-optimize-double-fsync-a-bunch.patch
+Patch0112: 0112-overload-on-wakeup.patch
+Patch0113: 0113-bootstats-add-printk-s-to-measure-boot-time-in-more-.patch
+Patch0114: 0114-fix-initcall-timestamps.patch
+Patch0115: 0115-smpboot-reuse-timer-calibration.patch
+Patch0116: 0116-raid6-add-Kconfig-option-to-skip-raid6-benchmarking.patch
+Patch0117: 0117-Initialize-ata-before-graphics.patch
+Patch0118: 0118-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
+Patch0119: 0119-give-rdrand-some-credit.patch
+Patch0120: 0120-e1000e-change-default-policy.patch
+Patch0121: 0121-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
+Patch0122: 0122-igb-no-runtime-pm-to-fix-reboot-oops.patch
+Patch0123: 0123-tweak-perfbias.patch
+Patch0124: 0124-e1000e-increase-pause-and-refresh-time.patch
 
 # Clear Linux KVM Memory Optimization
 Patch0151: 0151-mm-Export-do_madvise.patch
@@ -92,7 +92,7 @@ Group:          kernel
 Linux kernel extra files
 
 %prep
-%setup -q -n linux-4.9.46
+%setup -q -n linux-4.9.57
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
@@ -111,6 +111,7 @@ Linux kernel extra files
 %patch0108 -p1
 %patch0109 -p1
 %patch0110 -p1
+%patch0111 -p1
 %patch0112 -p1
 %patch0113 -p1
 %patch0114 -p1
@@ -124,7 +125,6 @@ Linux kernel extra files
 %patch0122 -p1
 %patch0123 -p1
 %patch0124 -p1
-%patch0125 -p1
 
 # Clear Linux KVM Memory Optimization
 %patch0151 -p1
