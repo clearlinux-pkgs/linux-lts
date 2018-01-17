@@ -1,4 +1,4 @@
 PKG_NAME := linux-lts
-URL := https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.76.tar.xz
+URL := https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.77.tar.xz
 
 include ../common/Makefile.common
