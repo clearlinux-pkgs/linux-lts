@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.14.20
-Release:        379
+Release:        380
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
