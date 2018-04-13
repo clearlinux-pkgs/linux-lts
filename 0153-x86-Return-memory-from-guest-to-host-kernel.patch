@@ -1,4 +1,4 @@
-From 9d487e5b95627e54c5ba256363ab6d1c5eaa592d Mon Sep 17 00:00:00 2001
+From 3c9eaeeaa8c7589e21fde1fa90e91da41ee4fae0 Mon Sep 17 00:00:00 2001
 From: Sebastien Boeuf <sebastien.boeuf@intel.com>
 Date: Mon, 23 Jan 2017 15:26:13 -0800
 Subject: [PATCH 153/154] x86: Return memory from guest to host kernel
@@ -86,7 +86,7 @@ index c373e44049b1..847f17ff111c 100644
  #ifdef CONFIG_PARAVIRT_SPINLOCKS
  void __init kvm_spinlock_init(void);
 diff --git a/arch/x86/kernel/kvm.c b/arch/x86/kernel/kvm.c
-index 8bb9594d0761..696319728469 100644
+index 652bdd867782..f9cbd2cafc59 100644
 --- a/arch/x86/kernel/kvm.c
 +++ b/arch/x86/kernel/kvm.c
 @@ -563,6 +563,16 @@ static __init int activate_jump_labels(void)
@@ -131,10 +131,10 @@ index 4efc3f56e6df..26eb3a05a8a3 100644
 +
  #endif /* _LINUX_MM_ARCH_HOOKS_H */
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 77e4d3c5c57b..b14190aeedff 100644
+index 1d7693c35424..dd46360e80a6 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -65,6 +65,7 @@
+@@ -64,6 +64,7 @@
  #include <linux/page_owner.h>
  #include <linux/kthread.h>
  #include <linux/memcontrol.h>
@@ -142,7 +142,7 @@ index 77e4d3c5c57b..b14190aeedff 100644
  #include <linux/ftrace.h>
  #include <linux/lockdep.h>
  #include <linux/nmi.h>
-@@ -869,6 +870,7 @@ static inline void __free_one_page(struct page *page,
+@@ -877,6 +878,7 @@ static inline void __free_one_page(struct page *page,
  	}
  
  done_merging:
@@ -151,5 +151,5 @@ index 77e4d3c5c57b..b14190aeedff 100644
  
  	/*
 -- 
-2.15.0
+2.17.0
 

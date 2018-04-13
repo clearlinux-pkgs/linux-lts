@@ -1,7 +1,7 @@
-From f4ac6476945ff62939420bcf8266e39f8d5d54bd Mon Sep 17 00:00:00 2001
+From 608c834c3838176377fd5ce07b64d059453e7104 Mon Sep 17 00:00:00 2001
 From: Hans de Goede <hdegoede@redhat.com>
 Date: Thu, 14 Sep 2017 12:35:36 +0200
-Subject: [PATCH] libata: Add new med_power_with_dipm
+Subject: [PATCH 11/12] libata: Add new med_power_with_dipm
  link_power_management_policy setting
 
 As described by Matthew Garret quite a while back:
@@ -56,7 +56,7 @@ Signed-off-by: Tejun Heo <tj@kernel.org>
  4 files changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/ata/libata-core.c b/drivers/ata/libata-core.c
-index ee4c1ec9dca0..65f7574afc55 100644
+index c6fe2974b336..0969d8fa7c6a 100644
 --- a/drivers/ata/libata-core.c
 +++ b/drivers/ata/libata-core.c
 @@ -3964,6 +3964,7 @@ int sata_link_scr_lpm(struct ata_link *link, enum ata_lpm_policy policy,
@@ -68,7 +68,7 @@ index ee4c1ec9dca0..65f7574afc55 100644
  		if (ata_link_nr_enabled(link) > 0)
  			/* no restrictions on LPM transitions */
 diff --git a/drivers/ata/libata-eh.c b/drivers/ata/libata-eh.c
-index e4effef0c83f..49b3745d2c1f 100644
+index ea20e0eb4d5a..7ce431e0f985 100644
 --- a/drivers/ata/libata-eh.c
 +++ b/drivers/ata/libata-eh.c
 @@ -3454,9 +3454,9 @@ static int ata_eh_maybe_retry_flush(struct ata_device *dev)
@@ -103,7 +103,7 @@ index e4effef0c83f..49b3745d2c1f 100644
  			err_mask = ata_dev_set_feature(dev,
  					SETFEATURES_SATA_ENABLE, SATA_DIPM);
 diff --git a/drivers/ata/libata-scsi.c b/drivers/ata/libata-scsi.c
-index 44ba292f2cd7..673e72f438eb 100644
+index 4ff69f508e95..f0595046b089 100644
 --- a/drivers/ata/libata-scsi.c
 +++ b/drivers/ata/libata-scsi.c
 @@ -106,10 +106,11 @@ static const u8 def_control_mpage[CONTROL_MPAGE_LEN] = {
@@ -135,5 +135,5 @@ index 931c32f1f18d..ed9826b21c5e 100644
  };
  
 -- 
-2.15.0
+2.17.0
 

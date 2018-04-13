@@ -1,7 +1,7 @@
-From be0a2929159c1b588f2a038df612a5d1437d94a8 Mon Sep 17 00:00:00 2001
+From f7e076053a5ee3a1a1d9b956899e10c0c5588883 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 14 Mar 2016 11:22:09 -0600
-Subject: [PATCH 104/126] silence rapl
+Subject: [PATCH 104/128] silence rapl
 
 ---
  drivers/powercap/intel_rapl.c | 2 +-
@@ -21,5 +21,5 @@ index d1694f1def72..6be610452765 100644
  
  		return -ENODEV;
 -- 
-2.15.0
+2.17.0
 

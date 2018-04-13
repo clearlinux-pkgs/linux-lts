@@ -1,7 +1,7 @@
-From c73ce0ba15bd4d0e1135e81cd5eec88c21de7bf2 Mon Sep 17 00:00:00 2001
+From 08cb42320b65808839b8694ef25386e1a5afce29 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Fri, 15 Dec 2017 16:04:29 -0600
-Subject: [PATCH] opae: add Kconfig and Makefile
+Subject: [PATCH 2002/2002] opae: add Kconfig and Makefile
 
 Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 ---
@@ -10,10 +10,10 @@ Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
  2 files changed, 2 insertions(+)
 
 diff --git a/drivers/Makefile b/drivers/Makefile
-index 587a36b8645e..04a03a4d629c 100644
+index 5a39e4bde439..ed1f094d56c0 100644
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
-@@ -181,6 +181,7 @@ obj-$(CONFIG_ANDROID)		+= android/
+@@ -182,6 +182,7 @@ obj-$(CONFIG_ANDROID)		+= android/
  obj-$(CONFIG_NVMEM)		+= nvmem/
  obj-$(CONFIG_FPGA)		+= fpga/
  obj-$(CONFIG_AAL)		+= fpga/aal/
@@ -34,5 +34,5 @@ index fb1998091d77..25ccdeb489d3 100644
  
  endif # FPGA
 -- 
-2.15.1
+2.17.0
 

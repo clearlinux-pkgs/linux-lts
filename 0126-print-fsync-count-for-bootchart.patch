@@ -1,7 +1,7 @@
-From 41e1c7869bca6e84545e265460e73b33b2e449f9 Mon Sep 17 00:00:00 2001
+From 0ef338c1c0fab39ce52f395f23868adecb787857 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Tue, 20 Jun 2017 20:19:08 +0000
-Subject: [PATCH 126/126] print fsync count for bootchart
+Subject: [PATCH 126/128] print fsync count for bootchart
 
 ---
  block/blk-core.c      | 3 +++
@@ -10,10 +10,10 @@ Subject: [PATCH 126/126] print fsync count for bootchart
  3 files changed, 5 insertions(+)
 
 diff --git a/block/blk-core.c b/block/blk-core.c
-index 048be4aa6024..3ddfe5901a07 100644
+index c01f4907dbbc..9944c0bb8ccf 100644
 --- a/block/blk-core.c
 +++ b/block/blk-core.c
-@@ -2271,6 +2271,9 @@ blk_qc_t submit_bio(struct bio *bio)
+@@ -2288,6 +2288,9 @@ blk_qc_t submit_bio(struct bio *bio)
  			count_vm_events(PGPGIN, count);
  		}
  
@@ -24,7 +24,7 @@ index 048be4aa6024..3ddfe5901a07 100644
  			char b[BDEVNAME_SIZE];
  			printk(KERN_DEBUG "%s(%d): %s block %Lu on %s (%u sectors)\n",
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index fdf74f27acf1..f4a102b249f5 100644
+index 41354690e4e3..cf77bb0c8328 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -738,6 +738,7 @@ struct task_struct {
@@ -48,5 +48,5 @@ index 2f93e4a2d9f6..7a2f3f3ea75b 100644
  	nr_switches = p->nvcsw + p->nivcsw;
  
 -- 
-2.15.0
+2.17.0
 

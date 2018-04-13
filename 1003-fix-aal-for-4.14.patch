@@ -1,7 +1,7 @@
-From 09e9944d1efcc0cec979cfe398c25b37e1d16f55 Mon Sep 17 00:00:00 2001
+From eda5a7d21b844079acb44cdd26cff9ca8c879039 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Wed, 15 Nov 2017 17:44:00 -0600
-Subject: [PATCH] fix aal for 4.14
+Subject: [PATCH 1003/1003] fix aal for 4.14
 
 Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 ---
@@ -139,5 +139,5 @@ index 4bdf59d17d58..51d02f1176f6 100644
  #endif // __AAL_LINUX__
  
 -- 
-2.15.0
+2.17.0
 

@@ -1,7 +1,7 @@
-From 5520437bebf7c65507a12bb111eba79f35efba1d Mon Sep 17 00:00:00 2001
+From 658191d856fc025c1b31da541df1219ba515c40b Mon Sep 17 00:00:00 2001
 From: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
 Date: Sat, 21 Oct 2017 09:52:00 -0700
-Subject: [PATCH] platform/x86: intel_turbo_max_3: Add Skylake platform
+Subject: [PATCH 12/12] platform/x86: intel_turbo_max_3: Add Skylake platform
 
 Ev Kontsevoy reported that he can't see the presence of
 "/proc/sys/kernel/sched_itmt_enabled" on i9-7900x with Asrock x299
@@ -45,5 +45,5 @@ index 4f60d8e32a0a..d4ea01805879 100644
  };
  
 -- 
-2.15.1
+2.17.0
 

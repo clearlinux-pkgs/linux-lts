@@ -1,4 +1,4 @@
-From c9304ab8898f463c4519832900e8f00d78a462d2 Mon Sep 17 00:00:00 2001
+From 31f1dcc1665db690ba8fb53f5527a482f01bc79a Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Fri, 15 Dec 2017 16:02:17 -0600
 Subject: [PATCH 2001/2002] opae: add intel fpga drivers
@@ -8,21 +8,21 @@ Signed-off-by: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
  drivers/fpga/intel/Kconfig       |   32 +
  drivers/fpga/intel/Makefile      |   22 +
  drivers/fpga/intel/afu-check.c   |  149 ++++
- drivers/fpga/intel/afu-error.c   |  226 +++++++
- drivers/fpga/intel/afu.c         |  965 ++++++++++++++++++++++++++
- drivers/fpga/intel/afu.h         |   78 +++
- drivers/fpga/intel/dma-region.c  |  372 ++++++++++
- drivers/fpga/intel/feature-dev.c |  288 ++++++++
- drivers/fpga/intel/feature-dev.h | 1390 ++++++++++++++++++++++++++++++++++++++
- drivers/fpga/intel/fme-error.c   |  448 ++++++++++++
- drivers/fpga/intel/fme-main.c    |  911 +++++++++++++++++++++++++
- drivers/fpga/intel/fme-perf.c    |  715 ++++++++++++++++++++
- drivers/fpga/intel/fme-pr.c      |  469 +++++++++++++
+ drivers/fpga/intel/afu-error.c   |  226 +++++
+ drivers/fpga/intel/afu.c         |  965 +++++++++++++++++++++
+ drivers/fpga/intel/afu.h         |   78 ++
+ drivers/fpga/intel/dma-region.c  |  372 ++++++++
+ drivers/fpga/intel/feature-dev.c |  288 +++++++
+ drivers/fpga/intel/feature-dev.h | 1390 ++++++++++++++++++++++++++++++
+ drivers/fpga/intel/fme-error.c   |  448 ++++++++++
+ drivers/fpga/intel/fme-main.c    |  911 ++++++++++++++++++++
+ drivers/fpga/intel/fme-perf.c    |  715 +++++++++++++++
+ drivers/fpga/intel/fme-pr.c      |  469 ++++++++++
  drivers/fpga/intel/fme.h         |   61 ++
- drivers/fpga/intel/pcie.c        | 1272 ++++++++++++++++++++++++++++++++++
- drivers/fpga/intel/pcie_check.c  |  121 ++++
- drivers/fpga/intel/region.c      |  130 ++++
- include/uapi/linux/intel-fpga.h  |  282 ++++++++
+ drivers/fpga/intel/pcie.c        | 1272 +++++++++++++++++++++++++++
+ drivers/fpga/intel/pcie_check.c  |  121 +++
+ drivers/fpga/intel/region.c      |  130 +++
+ include/uapi/linux/intel-fpga.h  |  282 ++++++
  18 files changed, 7931 insertions(+)
  create mode 100644 drivers/fpga/intel/Kconfig
  create mode 100644 drivers/fpga/intel/Makefile
@@ -8083,5 +8083,5 @@ index 000000000000..2a28e39df981
 +
 +#endif /* _UAPI_INTEL_FPGA_H */
 -- 
-2.15.1
+2.17.0
 
