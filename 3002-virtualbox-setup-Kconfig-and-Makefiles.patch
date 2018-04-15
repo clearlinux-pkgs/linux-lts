@@ -1,26 +1,26 @@
-From c06e2bffb108be632baf513ea5ece78b46d8ec99 Mon Sep 17 00:00:00 2001
+From a24f9876bde88891de76474428de5ca3e3e34f6c Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
-Date: Thu, 23 Feb 2017 13:50:15 -0600
-Subject: [PATCH 2002/2002] virtualbox: setup Kconfig and Makefiles
+Date: Sun, 15 Apr 2018 12:13:43 -0500
+Subject: [PATCH 3002/3002] virtualbox: setup Kconfig and Makefiles
 
 ---
- drivers/misc/Kconfig                           | 31 ++++++++++++++++++++++++++
- drivers/misc/Makefile                          |  3 +++
- drivers/misc/vboxguest/Makefile                |  1 +
- drivers/misc/vboxguest/Makefile.include.header |  2 +-
- drivers/misc/vboxsf/Makefile                   |  1 +
- drivers/misc/vboxsf/Makefile.include.header    |  2 +-
- drivers/misc/vboxvideo/Makefile                |  1 +
- drivers/misc/vboxvideo/Makefile.include.header |  2 +-
- 8 files changed, 40 insertions(+), 3 deletions(-)
+ drivers/misc/Kconfig                          | 31 +++++++++++++++++++
+ drivers/misc/Makefile                         |  3 ++
+ drivers/misc/vboxguest/Makefile               |  1 +
+ .../misc/vboxguest/Makefile.include.header    |  6 ++--
+ drivers/misc/vboxsf/Makefile                  |  1 +
+ drivers/misc/vboxsf/Makefile.include.header   |  6 ++--
+ drivers/misc/vboxvideo/Makefile               |  1 +
+ .../misc/vboxvideo/Makefile.include.header    |  6 ++--
+ 8 files changed, 46 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
-index 64971baf11fa..90e1aff41bac 100644
+index 8136dc7e863d..251334f909d3 100644
 --- a/drivers/misc/Kconfig
 +++ b/drivers/misc/Kconfig
-@@ -766,6 +766,37 @@ config PANEL_BOOT_MESSAGE
- 	  An empty message will only clear the display at driver init time. Any other
- 	  printf()-formatted message is valid with newline and escape codes.
+@@ -506,6 +506,37 @@ config PCI_ENDPOINT_TEST
+            Enable this configuration option to enable the host side test driver
+            for PCI Endpoint.
  
 +config VBOXGUEST
 +	tristate "VirtualBox Guest Addition driver"
@@ -57,24 +57,24 @@ index 64971baf11fa..90e1aff41bac 100644
  source "drivers/misc/eeprom/Kconfig"
  source "drivers/misc/cb710/Kconfig"
 diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
-index 31983366090a..3a208b3ce375 100644
+index ad0e64fdba34..1372be11ce8e 100644
 --- a/drivers/misc/Makefile
 +++ b/drivers/misc/Makefile
-@@ -53,6 +53,9 @@ obj-$(CONFIG_ECHO)		+= echo/
+@@ -53,6 +53,9 @@ obj-$(CONFIG_GENWQE)		+= genwqe/
+ obj-$(CONFIG_ECHO)		+= echo/
  obj-$(CONFIG_VEXPRESS_SYSCFG)	+= vexpress-syscfg.o
  obj-$(CONFIG_CXL_BASE)		+= cxl/
- obj-$(CONFIG_PANEL)             += panel.o
 +obj-$(CONFIG_VBOXGUEST)		+= vboxguest/
 +obj-$(CONFIG_VBOXSF)		+= vboxsf/
 +obj-$(CONFIG_VBOXVIDEO)		+= vboxvideo/
- 
- lkdtm-$(CONFIG_LKDTM)		+= lkdtm_core.o
- lkdtm-$(CONFIG_LKDTM)		+= lkdtm_bugs.o
+ obj-$(CONFIG_ASPEED_LPC_CTRL)	+= aspeed-lpc-ctrl.o
+ obj-$(CONFIG_ASPEED_LPC_SNOOP)	+= aspeed-lpc-snoop.o
+ obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
 diff --git a/drivers/misc/vboxguest/Makefile b/drivers/misc/vboxguest/Makefile
-index b40364795729..5235d0de9777 100644
+index 655c8cc02546..ad958d52c198 100644
 --- a/drivers/misc/vboxguest/Makefile
 +++ b/drivers/misc/vboxguest/Makefile
-@@ -18,6 +18,7 @@
+@@ -27,6 +27,7 @@
  # Linux kbuild sets this to our source directory if we are called from there
  obj ?= $(CURDIR)
  include $(obj)/Makefile.include.header
@@ -83,23 +83,38 @@ index b40364795729..5235d0de9777 100644
  MOD_NAME = vboxguest
  
 diff --git a/drivers/misc/vboxguest/Makefile.include.header b/drivers/misc/vboxguest/Makefile.include.header
-index a9bc16878eb0..315ec3542086 100644
+index 1ceebec41848..fd7b9656fc29 100644
 --- a/drivers/misc/vboxguest/Makefile.include.header
 +++ b/drivers/misc/vboxguest/Makefile.include.header
-@@ -82,7 +82,7 @@ endif
- 
- ifneq ($(MAKECMDGOALS),clean)
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
  
 -ifeq ($(KERNELRELEASE),)
 +ifeq ($(KERNELVERSION),)
  
   #
   # building from this directory
+@@ -131,12 +131,12 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+ endif # neq($(KERNELRELEASE),)
+ 
+ # Kernel build folder
+-KERN_DIR := /lib/modules/$(KERN_VER)/build
++KERN_DIR := $(KBUILD_SRC)
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+           Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
-index 97f2080afc62..e30e8b9274f4 100644
+index 83ed82d875e7..0dcddff682d3 100644
 --- a/drivers/misc/vboxsf/Makefile
 +++ b/drivers/misc/vboxsf/Makefile
-@@ -17,6 +17,7 @@
+@@ -20,6 +20,7 @@
  # Linux kbuild sets this to our source directory if we are called from there
  obj ?= $(CURDIR)
  include $(obj)/Makefile.include.header
@@ -108,20 +123,35 @@ index 97f2080afc62..e30e8b9274f4 100644
  MOD_NAME = vboxsf
  MOD_OBJS   = \
 diff --git a/drivers/misc/vboxsf/Makefile.include.header b/drivers/misc/vboxsf/Makefile.include.header
-index a9bc16878eb0..315ec3542086 100644
+index 1ceebec41848..fd7b9656fc29 100644
 --- a/drivers/misc/vboxsf/Makefile.include.header
 +++ b/drivers/misc/vboxsf/Makefile.include.header
-@@ -82,7 +82,7 @@ endif
- 
- ifneq ($(MAKECMDGOALS),clean)
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
  
 -ifeq ($(KERNELRELEASE),)
 +ifeq ($(KERNELVERSION),)
  
   #
   # building from this directory
+@@ -131,12 +131,12 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+ endif # neq($(KERNELRELEASE),)
+ 
+ # Kernel build folder
+-KERN_DIR := /lib/modules/$(KERN_VER)/build
++KERN_DIR := $(KBUILD_SRC)
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+           Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
-index 3612b5c5cf6f..03b199d7e97b 100644
+index 74751d62e3bf..f062b06a36ce 100755
 --- a/drivers/misc/vboxvideo/Makefile
 +++ b/drivers/misc/vboxvideo/Makefile
 @@ -20,6 +20,7 @@
@@ -130,21 +160,36 @@ index 3612b5c5cf6f..03b199d7e97b 100644
  include $(obj)/Makefile.include.header
 +KBUILD_EXTMOD=$(obj)
  
- MOD_NAME   = vboxvideo
+ BUILD =
  
 diff --git a/drivers/misc/vboxvideo/Makefile.include.header b/drivers/misc/vboxvideo/Makefile.include.header
-index a9bc16878eb0..315ec3542086 100644
+index 1ceebec41848..fd7b9656fc29 100755
 --- a/drivers/misc/vboxvideo/Makefile.include.header
 +++ b/drivers/misc/vboxvideo/Makefile.include.header
-@@ -82,7 +82,7 @@ endif
- 
- ifneq ($(MAKECMDGOALS),clean)
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
  
 -ifeq ($(KERNELRELEASE),)
 +ifeq ($(KERNELVERSION),)
  
   #
   # building from this directory
+@@ -131,12 +131,12 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+ endif # neq($(KERNELRELEASE),)
+ 
+ # Kernel build folder
+-KERN_DIR := /lib/modules/$(KERN_VER)/build
++KERN_DIR := $(KBUILD_SRC)
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+           Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 -- 
-2.14.2
+2.17.0
 
