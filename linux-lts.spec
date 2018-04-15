@@ -10,7 +10,7 @@ License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.34.tar.xz
+Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.34.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -60,21 +60,19 @@ Patch0117: 0117-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
 Patch0118: 0118-give-rdrand-some-credit.patch
 Patch0119: 0119-e1000e-change-default-policy.patch
 Patch0120: 0120-ipv4-tcp-allow-the-memory-tuning-for-tcp-to-go-a-lit.patch
-Patch0121: 0121-igb-no-runtime-pm-to-fix-reboot-oops.patch
+Patch0121: 0121-disable-PM-on-some-NICs.patch
 Patch0122: 0122-tweak-perfbias.patch
 Patch0123: 0123-e1000e-increase-pause-and-refresh-time.patch
 Patch0124: 0124-kernel-time-reduce-ntp-wakeups.patch
 Patch0125: 0125-init-wait-for-partition-and-retry-scan.patch
 Patch0126: 0126-print-fsync-count-for-bootchart.patch
+Patch0127: 0127-zero-extra-registers.patch
 
 # Clear Linux KVM Memory Optimization
 Patch0151: 0151-mm-Export-do_madvise.patch
 Patch0152: 0152-x86-kvm-Notify-host-to-release-pages.patch
 Patch0153: 0153-x86-Return-memory-from-guest-to-host-kernel.patch
 Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
-
-Patch0500: zero-regs.patch
-
 
 # Serie    XYYY: Extra features modules
 #    100X: Accelertor Abstraction Layer (AAL)
@@ -84,11 +82,11 @@ Patch1003: 1003-fix-aal-for-4.14.patch
 
 #    200X: Open Programmable Acceleration Engine (OPAE)
 Patch2001: 2001-opae-add-intel-fpga-drivers.patch
-Patch2002: 2002-opae-add-Kconfig.patch
+Patch2002: 2002-opae-add-Kconfig-and-Makefile.patch
 
-#          200Y: VirtualBox modules
-#Patch3001: 2001-virtualbox-add-module-sources.patch
-#Patch3002: 2002-virtualbox-setup-Kconfig-and-Makefiles.patch
+#     300Y: VirtualBox modules
+Patch3001: 3001-virtualbox-add-module-sources.patch
+Patch3002: 3002-virtualbox-setup-Kconfig-and-Makefiles.patch
 
 
 %description
@@ -136,14 +134,13 @@ Linux kernel extra files
 %patch0124 -p1
 %patch0125 -p1
 %patch0126 -p1
+%patch0127 -p1
 
 # Clear Linux KVM Memory Optimization
 %patch0151 -p1
 %patch0152 -p1
 %patch0153 -p1
 %patch0154 -p1
-
-%patch0500 -p1
 
 # Serie    XYYY: Extra features modules
 #     100X  Accelertor Abstraction Layer (AAL)
@@ -155,9 +152,9 @@ Linux kernel extra files
 %patch2001 -p1
 %patch2002 -p1
 
-#     200Y: VirtualBox modules
-#%patch3001 -p1
-#%patch3002 -p1
+#     300Y: VirtualBox modules
+%patch3001 -p1
+%patch3002 -p1
 
 cp %{SOURCE1} .
 
