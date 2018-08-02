@@ -33,7 +33,7 @@ BuildRequires:  linux-firmware
 %define debug_package %{nil}
 %define __strip /bin/true
 
-
+# kconfig: linux-4.17.11-600
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-libata-Add-new-med_power_with_dipm-link_power_manage.patch
@@ -145,8 +145,8 @@ Linux kernel extra files
 # Serie    XYYY: Extra features modules
 
 #    200X: Open Programmable Acceleration Engine (OPAE)
-%patch2001 -p1
-%patch2002 -p1
+#%patch2001 -p1
+#%patch2002 -p1
 
 #     300Y: VirtualBox modules
 %patch3001 -p1
