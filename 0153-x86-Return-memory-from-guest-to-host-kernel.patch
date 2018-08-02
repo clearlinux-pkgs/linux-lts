@@ -1,4 +1,4 @@
-From 3c9eaeeaa8c7589e21fde1fa90e91da41ee4fae0 Mon Sep 17 00:00:00 2001
+From b21d74b60c719e053930234cbf63110c10c100a4 Mon Sep 17 00:00:00 2001
 From: Sebastien Boeuf <sebastien.boeuf@intel.com>
 Date: Mon, 23 Jan 2017 15:26:13 -0800
 Subject: [PATCH 153/154] x86: Return memory from guest to host kernel
@@ -131,7 +131,7 @@ index 4efc3f56e6df..26eb3a05a8a3 100644
 +
  #endif /* _LINUX_MM_ARCH_HOOKS_H */
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 1d7693c35424..dd46360e80a6 100644
+index 59ccf455fcbd..b503f0c663c0 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -64,6 +64,7 @@
@@ -151,5 +151,5 @@ index 1d7693c35424..dd46360e80a6 100644
  
  	/*
 -- 
-2.17.0
+2.18.0
 

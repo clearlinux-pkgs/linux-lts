@@ -1,7 +1,7 @@
-From 478e23ac985e24efcc5ce930b9a2135a617d2947 Mon Sep 17 00:00:00 2001
+From 6a7ad1d6297841c098c1625df13a2721f3f4bca7 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 14 Mar 2016 11:06:46 -0600
-Subject: [PATCH 106/128] ksm-wakeups
+Subject: [PATCH 106/133] ksm-wakeups
 
 reduce wakeups in ksm by adding rounding (aligning) when the sleep times are 1 second or longer
 
@@ -25,10 +25,10 @@ index c8e06703e44c..8a4029599eff 100644
  
  struct cpumask watchdog_allowed_mask __read_mostly;
 diff --git a/mm/ksm.c b/mm/ksm.c
-index 6cb60f46cce5..883a9441e055 100644
+index f50cc573815f..0724bca815f9 100644
 --- a/mm/ksm.c
 +++ b/mm/ksm.c
-@@ -2335,8 +2335,12 @@ static int ksm_scan_thread(void *nothing)
+@@ -2372,8 +2372,12 @@ static int ksm_scan_thread(void *nothing)
  		try_to_freeze();
  
  		if (ksmd_should_run()) {
@@ -44,5 +44,5 @@ index 6cb60f46cce5..883a9441e055 100644
  			wait_event_freezable(ksm_thread_wait,
  				ksmd_should_run() || kthread_should_stop());
 -- 
-2.17.0
+2.18.0
 

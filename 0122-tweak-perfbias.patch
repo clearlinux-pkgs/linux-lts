@@ -1,17 +1,17 @@
-From fed38623b66e8715a9ddc322ba9c95dc75805738 Mon Sep 17 00:00:00 2001
+From a188c3a93c593c0570228db21d523422d3245543 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sun, 22 Jan 2017 18:51:13 +0000
-Subject: [PATCH 122/128] tweak perfbias
+Subject: [PATCH 122/133] tweak perfbias
 
 ---
  arch/x86/kernel/cpu/intel.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/intel.c b/arch/x86/kernel/cpu/intel.c
-index c3af167d0a70..bd046dbbfca3 100644
+index 0b2330e19169..718e308dd370 100644
 --- a/arch/x86/kernel/cpu/intel.c
 +++ b/arch/x86/kernel/cpu/intel.c
-@@ -521,12 +521,12 @@ static void init_intel_energy_perf(struct cpuinfo_x86 *c)
+@@ -524,12 +524,12 @@ static void init_intel_energy_perf(struct cpuinfo_x86 *c)
  		return;
  
  	rdmsrl(MSR_IA32_ENERGY_PERF_BIAS, epb);
@@ -28,5 +28,5 @@ index c3af167d0a70..bd046dbbfca3 100644
  }
  
 -- 
-2.17.0
+2.18.0
 

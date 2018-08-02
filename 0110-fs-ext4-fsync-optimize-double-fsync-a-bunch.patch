@@ -1,7 +1,7 @@
-From c7806660a9267ac1ad4e69e51f70140649ae1df2 Mon Sep 17 00:00:00 2001
+From 9b876d7897b88afe6a4f514ded31f305955b3137 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Sat, 9 Apr 2016 22:41:37 +0000
-Subject: [PATCH 110/128] fs: ext4: fsync: optimize double-fsync() a bunch
+Subject: [PATCH 110/133] fs: ext4: fsync: optimize double-fsync() a bunch
 
 There are cases where EXT4 is a bit too conservative sending barriers down to
 the disk; there are cases where the transaction in progress is not the one
@@ -21,7 +21,7 @@ barrier to complete. Any consecutive IO will block on the barrier correctly.
  5 files changed, 70 insertions(+), 1 deletion(-)
 
 diff --git a/block/bio.c b/block/bio.c
-index dbaa82c967f4..9090ddf06a42 100644
+index 90f19d7df66c..e811efcd5130 100644
 --- a/block/bio.c
 +++ b/block/bio.c
 @@ -959,6 +959,25 @@ int submit_bio_wait(struct bio *bio)
@@ -119,7 +119,7 @@ index 26a7fe5c4fd3..2708b292ddca 100644
  			ret = err;
  	}
 diff --git a/include/linux/bio.h b/include/linux/bio.h
-index 45f00dd6323c..0091ae3ed69a 100644
+index 5aa40f4712ff..74a24f950a86 100644
 --- a/include/linux/bio.h
 +++ b/include/linux/bio.h
 @@ -448,6 +448,7 @@ struct request_queue;
@@ -131,7 +131,7 @@ index 45f00dd6323c..0091ae3ed69a 100644
  
  extern void bio_init(struct bio *bio, struct bio_vec *table,
 diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 6362e3606aa5..ccec29ccc4ee 100644
+index 4d4af0e94059..8a5dfba7b71f 100644
 --- a/include/linux/blkdev.h
 +++ b/include/linux/blkdev.h
 @@ -1353,6 +1353,7 @@ static inline struct request *blk_map_queue_find_tag(struct blk_queue_tag *bqt,
@@ -154,5 +154,5 @@ index 6362e3606aa5..ccec29ccc4ee 100644
  
  #endif
 -- 
-2.17.0
+2.18.0
 

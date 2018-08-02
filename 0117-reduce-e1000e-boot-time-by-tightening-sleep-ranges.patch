@@ -1,7 +1,7 @@
-From b8e94ca3d0f9f40adb66f35298405867ee4120f1 Mon Sep 17 00:00:00 2001
+From 67278a3c15359c0d6470a2fa269a097fe013dbe0 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Mon, 25 Jul 2016 06:44:34 -0500
-Subject: [PATCH 117/128] reduce e1000e boot time by tightening sleep ranges
+Subject: [PATCH 117/133] reduce e1000e boot time by tightening sleep ranges
 
 The e1000e driver is a great user of the usleep_range() API,
 and has any nice ranges that in principle help power management.
@@ -120,7 +120,7 @@ index 003cbd605799..6295b607c555 100644
  		}
  		/* Fall Through */
 diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 31277d3bb7dc..27ff3b5efd30 100644
+index ff308b05d68c..c7cd81664f47 100644
 --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
 +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
 @@ -289,7 +289,7 @@ static void e1000_toggle_lanphypc_pch_lpt(struct e1000_hw *hw)
@@ -214,7 +214,7 @@ index 31277d3bb7dc..27ff3b5efd30 100644
  	/* Workaround for ICH8 bit corruption issue in FIFO memory */
  	if (hw->mac.type == e1000_ich8lan) {
 diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
-index f457c5703d0c..bb4b1baac8e5 100644
+index db735644b312..22385d467a40 100644
 --- a/drivers/net/ethernet/intel/e1000e/mac.c
 +++ b/drivers/net/ethernet/intel/e1000e/mac.c
 @@ -820,7 +820,7 @@ static s32 e1000_poll_fiber_serdes_link_generic(struct e1000_hw *hw)
@@ -227,7 +227,7 @@ index f457c5703d0c..bb4b1baac8e5 100644
  		if (status & E1000_STATUS_LU)
  			break;
 diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 991c2a0dd67e..974909347459 100644
+index 7a226537877b..3192da9a6eea 100644
 --- a/drivers/net/ethernet/intel/e1000e/netdev.c
 +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
 @@ -3232,7 +3232,7 @@ static void e1000_configure_rx(struct e1000_adapter *adapter)
@@ -307,5 +307,5 @@ index 2efd80dfd88e..38f7c8fb3061 100644
  	}
  
 -- 
-2.17.0
+2.18.0
 

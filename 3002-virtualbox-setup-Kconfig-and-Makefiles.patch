@@ -1,4 +1,4 @@
-From a24f9876bde88891de76474428de5ca3e3e34f6c Mon Sep 17 00:00:00 2001
+From 2418d622309353097625b6cbe57e6c5f253d8e95 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Sun, 15 Apr 2018 12:13:43 -0500
 Subject: [PATCH 3002/3002] virtualbox: setup Kconfig and Makefiles
@@ -71,7 +71,7 @@ index ad0e64fdba34..1372be11ce8e 100644
  obj-$(CONFIG_ASPEED_LPC_SNOOP)	+= aspeed-lpc-snoop.o
  obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
 diff --git a/drivers/misc/vboxguest/Makefile b/drivers/misc/vboxguest/Makefile
-index 655c8cc02546..ad958d52c198 100644
+index fdb72b36e761..c6e0e4279db0 100644
 --- a/drivers/misc/vboxguest/Makefile
 +++ b/drivers/misc/vboxguest/Makefile
 @@ -27,6 +27,7 @@
@@ -111,7 +111,7 @@ index 1ceebec41848..fd7b9656fc29 100644
   $(error Error: unable to find the headers of the Linux kernel to build against. \
            Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
-index 83ed82d875e7..0dcddff682d3 100644
+index 8ba17c7b5008..04ca20d4d256 100644
 --- a/drivers/misc/vboxsf/Makefile
 +++ b/drivers/misc/vboxsf/Makefile
 @@ -20,6 +20,7 @@
@@ -151,7 +151,7 @@ index 1ceebec41848..fd7b9656fc29 100644
   $(error Error: unable to find the headers of the Linux kernel to build against. \
            Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
-index 74751d62e3bf..f062b06a36ce 100755
+index ae0b57a8b316..ff8d913f9f7f 100755
 --- a/drivers/misc/vboxvideo/Makefile
 +++ b/drivers/misc/vboxvideo/Makefile
 @@ -20,6 +20,7 @@
@@ -191,5 +191,5 @@ index 1ceebec41848..fd7b9656fc29 100755
   $(error Error: unable to find the headers of the Linux kernel to build against. \
            Specify KERN_VER=<version> (currently $(KERN_VER)) and run Make again)
 -- 
-2.17.0
+2.18.0
 

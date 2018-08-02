@@ -1,7 +1,7 @@
-From 90795a9f63b6bb755cb3b719c5b4761f6ecb2ad8 Mon Sep 17 00:00:00 2001
+From 8d85c21e1b9febf4cb8bfc2f428d631671a637c1 Mon Sep 17 00:00:00 2001
 From: Auke Kok <auke-jan.h.kok@intel.com>
 Date: Thu, 2 Aug 2018 12:03:22 -0700
-Subject: [PATCH] Migrate some systemd defaults to the kernel defaults.
+Subject: [PATCH 129/133] Migrate some systemd defaults to the kernel defaults.
 
 These settings are needed to prevent networking issues when
 the networking modules come up by default without explicit
@@ -15,18 +15,18 @@ if we're not going to do anything else ever.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/dummy.c b/drivers/net/dummy.c
-index 0d15a12a4560..02271c2533d6 100644
+index d0a1f9ce3168..7c7ab94fe252 100644
 --- a/drivers/net/dummy.c
 +++ b/drivers/net/dummy.c
-@@ -42,7 +42,7 @@
- #define DRV_NAME	"dummy"
- #define DRV_VERSION	"1.0"
+@@ -45,7 +45,7 @@
+ #undef pr_fmt
+ #define pr_fmt(fmt) DRV_NAME ": " fmt
  
 -static int numdummies = 1;
 +static int numdummies = 0;
+ static int num_vfs;
  
- /* fake multicast ability */
- static void set_multicast_list(struct net_device *dev)
+ struct vf_data_storage {
 diff --git a/include/uapi/linux/if_bonding.h b/include/uapi/linux/if_bonding.h
 index 61a1bf6e865e..78a449f3bf5d 100644
 --- a/include/uapi/linux/if_bonding.h

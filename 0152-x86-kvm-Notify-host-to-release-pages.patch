@@ -1,4 +1,4 @@
-From 5bad0093d0cc8768d3768d7cd2d57c64e6ecd96b Mon Sep 17 00:00:00 2001
+From d31b4c68f972d635609b749e7d6e3073c4e2e274 Mon Sep 17 00:00:00 2001
 From: Sebastien Boeuf <sebastien.boeuf@intel.com>
 Date: Mon, 23 Jan 2017 15:08:55 -0800
 Subject: [PATCH 152/154] x86: kvm: Notify host to release pages
@@ -42,7 +42,7 @@ Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
  create mode 100644 mm/kvm.c
 
 diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-index b9afb4784d12..36cf084c5e42 100644
+index 2f3fe25639b3..816842fd063f 100644
 --- a/arch/x86/kvm/x86.c
 +++ b/arch/x86/kvm/x86.c
 @@ -45,6 +45,7 @@
@@ -53,7 +53,7 @@ index b9afb4784d12..36cf084c5e42 100644
  #include <linux/perf_event.h>
  #include <linux/uaccess.h>
  #include <linux/hash.h>
-@@ -6268,6 +6269,19 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
+@@ -6288,6 +6289,19 @@ static void kvm_pv_kick_cpu_op(struct kvm *kvm, unsigned long flags, int apicid)
  	kvm_irq_delivery_to_apic(kvm, NULL, &lapic_irq, NULL);
  }
  
@@ -73,7 +73,7 @@ index b9afb4784d12..36cf084c5e42 100644
  void kvm_vcpu_deactivate_apicv(struct kvm_vcpu *vcpu)
  {
  	vcpu->arch.apicv_active = false;
-@@ -6319,6 +6333,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
+@@ -6340,6 +6354,9 @@ int kvm_emulate_hypercall(struct kvm_vcpu *vcpu)
  		ret = kvm_pv_clock_pairing(vcpu, a0, a1);
  		break;
  #endif
@@ -84,10 +84,10 @@ index b9afb4784d12..36cf084c5e42 100644
  		ret = -KVM_ENOSYS;
  		break;
 diff --git a/include/linux/mm.h b/include/linux/mm.h
-index c31a0649fe5a..9024d820acbd 100644
+index 93131f1b2d68..d68574320419 100644
 --- a/include/linux/mm.h
 +++ b/include/linux/mm.h
-@@ -2466,6 +2466,11 @@ extern bool process_shares_mm(struct task_struct *p, struct mm_struct *mm);
+@@ -2467,6 +2467,11 @@ extern bool process_shares_mm(struct task_struct *p, struct mm_struct *mm);
  extern int sysctl_drop_caches;
  int drop_caches_sysctl_handler(struct ctl_table *, int,
  					void __user *, size_t *, loff_t *);
@@ -177,5 +177,5 @@ index 000000000000..1c5600788221
 +	return 0;
 +}
 -- 
-2.17.0
+2.18.0
 

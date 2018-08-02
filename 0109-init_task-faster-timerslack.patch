@@ -1,7 +1,7 @@
-From d332206905f6a57ef299ded8a046c757b61b98c4 Mon Sep 17 00:00:00 2001
+From 01a830296460108e0b7e1c3a607f3fe54d7042a0 Mon Sep 17 00:00:00 2001
 From: Arjan van de Ven <arjan@linux.intel.com>
 Date: Wed, 23 Mar 2016 14:52:41 +0000
-Subject: [PATCH 109/128] init_task: faster timerslack
+Subject: [PATCH 109/133] init_task: faster timerslack
 
 the default tuning is a compromise between client power and server
 performance;
@@ -30,5 +30,5 @@ index 8062e6cc607c..2903519e2462 100644
  		[PIDTYPE_PID]  = INIT_PID_LINK(PIDTYPE_PID),		\
  		[PIDTYPE_PGID] = INIT_PID_LINK(PIDTYPE_PGID),		\
 -- 
-2.17.0
+2.18.0
 
