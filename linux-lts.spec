@@ -77,10 +77,6 @@ Patch0153: 0153-x86-Return-memory-from-guest-to-host-kernel.patch
 Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
 
 # Serie    XYYY: Extra features modules
-#    100X: Accelertor Abstraction Layer (AAL)
-Patch1001: 1001-fpga-add-AAL-6.3.1.patch
-Patch1002: 1002-fpga-add-AAL-to-fpga-Kconfig-and-Makefile.patch
-Patch1003: 1003-fix-aal-for-4.14.patch
 
 #    200X: Open Programmable Acceleration Engine (OPAE)
 Patch2001: 2001-opae-add-intel-fpga-drivers.patch
@@ -147,10 +143,6 @@ Linux kernel extra files
 %patch0154 -p1
 
 # Serie    XYYY: Extra features modules
-#     100X  Accelertor Abstraction Layer (AAL)
-%patch1001 -p1
-%patch1002 -p1
-%patch1003 -p1
 
 #    200X: Open Programmable Acceleration Engine (OPAE)
 %patch2001 -p1
