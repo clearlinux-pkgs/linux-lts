@@ -125,8 +125,12 @@ run_install ()
     if [ ! -x ${TMPDIR}/install.sh ] ; then
         die "VBOX Files not Found" "Can not find VirtualBox install files ..."
     fi
+
+    # Do not build kernel modules
+    export INSTALL_NO_MODULE_BUILDS=1
+
     cd ${TMPDIR}
-    ./install.sh ./install.sh install --no-setup
+    ./install.sh install --no-setup
 }
 
 setup_install ()
