@@ -80,8 +80,8 @@ Patch0154: 0154-sysctl-vm-Fine-grained-cache-shrinking.patch
 # Serie    XYYY: Extra features modules
 
 #    200X: Open Programmable Acceleration Engine (OPAE)
-Patch2001: 2001-opae-add-intel-fpga-drivers.patch
-Patch2002: 2002-opae-add-Kconfig-and-Makefile.patch
+#Patch2001: 2001-opae-add-intel-fpga-drivers.patch
+#Patch2002: 2002-opae-add-Kconfig-and-Makefile.patch
 
 #     300Y: VirtualBox modules
 Patch3001: 3001-virtualbox-add-module-sources.patch
