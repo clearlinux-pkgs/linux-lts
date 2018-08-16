@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.14.62 Kernel Configuration
+# Linux/x86 4.14.63 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -258,6 +258,7 @@ CONFIG_SLAB_FREELIST_RANDOM=y
 CONFIG_SYSTEM_DATA_VERIFICATION=y
 CONFIG_PROFILING=y
 CONFIG_TRACEPOINTS=y
+CONFIG_HOTPLUG_SMT=y
 # CONFIG_OPROFILE is not set
 CONFIG_HAVE_OPROFILE=y
 CONFIG_OPROFILE_NMI_TIMER=y
@@ -4635,7 +4636,7 @@ CONFIG_VT6656=m
 CONFIG_TYPEC_TCPM=m
 CONFIG_TYPEC_TCPCI=m
 CONFIG_TYPEC_FUSB302=m
-CONFIG_DRM_VBOXVIDEO=m
+# CONFIG_DRM_VBOXVIDEO is not set
 # CONFIG_PI433 is not set
 CONFIG_X86_PLATFORM_DEVICES=y
 CONFIG_ACER_WMI=m
@@ -6113,5 +6114,5 @@ CONFIG_SBITMAP=y
 # CONFIG_STRING_SELFTEST is not set
 
 # kernel-config sources:
-# FILEVER=/usr/share/kernel-config/base-4.14-1-2
-# FILEVER=/usr/share/kernel-config/mandatory-4.14-1-2
+# FILEVER=/usr/share/kernel-config/base-4.14-1-6
+# FILEVER=/usr/share/kernel-config/mandatory-4.14-1-6
