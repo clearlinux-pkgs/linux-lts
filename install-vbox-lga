@@ -118,6 +118,7 @@ patch_systemd ()
     # Create a "user" installation instead a "system" installation
     mkdir -p /etc/systemd/system
     sed -i -- 's/lib/etc/g' ${TMPDIR}/routines.sh
+    sed -i -- 's/\(\[Service\]\)/\1\nReadOnlyPaths=\/usr\nProtectSystem=true/' ${TMPDIR}/routines.sh
 }
 
 run_install ()
@@ -130,7 +131,11 @@ run_install ()
     export INSTALL_NO_MODULE_BUILDS=1
 
     cd ${TMPDIR}
-    ./install.sh install --no-setup
+    sed -i -- 's/\"$INSTALLATION_DIR\/init\/vboxadd.*\"\s*setup/true/g' install.sh
+    sed -i -- 's/^\($INSTALLATION_DIR\/$UNINSTALL\)$/\1 "\\$@"/g' install.sh
+    sed -i -- 's/^\(\s*\"${PUBLIC_UNINSTALL_HOOK}\"\)/\1 "no_cleanup"/g' install.sh
+    sed -iE -- 's/^\s*\/\(usr\|sbin\)\/\S*//g' deffiles
+    ./install.sh install --no-setup --no-cleanup
 }
 
 setup_install ()
@@ -139,6 +144,9 @@ setup_install ()
     # Patch some files
     for f in ${INSTALL_DIR}/init/vboxadd ${INSTALL_DIR}/lib/VBoxGuestAdditions/vboxadd
     do
+        if ! [[ -f $f ]]; then
+            continue
+        fi
         # Do not call setup_modules, we ship them already
         sed -i -- 's/setup_modules;/true;/g' ${f}
         # Do not remove old modules, we take care of them
@@ -151,7 +159,6 @@ setup_install ()
     mkdir -p /etc/udev/rules.d
     mkdir -p /etc/ld.so.conf.d
     mkdir -p /etc/xdg/autostart
-    ${INSTALL_DIR}/init/vboxadd setup
     echo -e "\n\nTo use Clear Linux GUI please do:\n\n
     swupd bundle-add os-utils-gui\n
     and then 'startx'"
