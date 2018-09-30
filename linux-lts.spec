@@ -4,13 +4,13 @@
 #
 
 Name:           linux-lts
-Version:        4.14.72
-Release:        405
+Version:        4.14.73
+Release:        406
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.72.tar.xz
+Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.73.tar.xz
 Source1:        config
 Source2:        cmdline
 Source3:        install-vbox-lga
@@ -100,7 +100,7 @@ Group:          kernel
 Linux kernel extra files
 
 %prep
-%setup -q -n linux-4.14.72
+%setup -q -n linux-4.14.73
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
