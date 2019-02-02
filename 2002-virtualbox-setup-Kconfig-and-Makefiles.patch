@@ -1,0 +1,252 @@
+From e0417d7a4e69257af3d356b86a237e1d201d1671 Mon Sep 17 00:00:00 2001
+From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
+Date: Fri, 1 Feb 2019 17:59:28 -0600
+Subject: [PATCH 2002/2002] virtualbox: setup Kconfig and Makefiles
+
+---
+ drivers/misc/Kconfig                          | 31 +++++++++++++++++++
+ drivers/misc/Makefile                         |  3 ++
+ drivers/misc/vboxguest/Makefile               |  1 +
+ .../misc/vboxguest/Makefile.include.header    | 10 +++---
+ drivers/misc/vboxsf/Makefile                  | 11 ++++---
+ drivers/misc/vboxsf/Makefile.include.header   | 10 +++---
+ drivers/misc/vboxvideo/Makefile               |  1 +
+ .../misc/vboxvideo/Makefile.include.header    | 10 +++---
+ 8 files changed, 57 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index 3726eacdf65d..f124d4b55188 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -513,6 +513,37 @@ config MISC_RTSX
+ 	tristate
+ 	default MISC_RTSX_PCI || MISC_RTSX_USB
+ 
++config VBOXGUEST
++	tristate "VirtualBox Guest Addition driver"
++	depends on X86
++	default m
++	help
++	  This is the main driver from VirtualBox Guest Additions.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called vboxguest.
++
++config VBOXSF
++	tristate "VirtualBox Share Folder driver"
++	depends on X86 && VBOXGUEST
++	default m
++	help
++	  This is the driver to share folders between guest and
++	  host.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called vboxsf.
++
++config VBOXVIDEO
++	tristate "VirtualBox Video driver"
++	depends on X86 && VBOXGUEST
++	default m
++	help
++	  This is the video driver for VirtualBox VM.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called vboxvideo.
++
+ source "drivers/misc/c2port/Kconfig"
+ source "drivers/misc/eeprom/Kconfig"
+ source "drivers/misc/cb710/Kconfig"
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index af22bbc3d00c..45351a953425 100644
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -53,6 +53,9 @@ obj-$(CONFIG_GENWQE)		+= genwqe/
+ obj-$(CONFIG_ECHO)		+= echo/
+ obj-$(CONFIG_VEXPRESS_SYSCFG)	+= vexpress-syscfg.o
+ obj-$(CONFIG_CXL_BASE)		+= cxl/
++obj-$(CONFIG_VBOXGUEST)		+= vboxguest/
++obj-$(CONFIG_VBOXSF)		+= vboxsf/
++obj-$(CONFIG_VBOXVIDEO)		+= vboxvideo/
+ obj-$(CONFIG_ASPEED_LPC_CTRL)	+= aspeed-lpc-ctrl.o
+ obj-$(CONFIG_ASPEED_LPC_SNOOP)	+= aspeed-lpc-snoop.o
+ obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
+diff --git a/drivers/misc/vboxguest/Makefile b/drivers/misc/vboxguest/Makefile
+index c1a8fe10f247..5858c523b6b3 100644
+--- a/drivers/misc/vboxguest/Makefile
++++ b/drivers/misc/vboxguest/Makefile
+@@ -27,6 +27,7 @@
+ # Linux kbuild sets this to our source directory if we are called from there
+ obj ?= $(CURDIR)
+ include $(obj)/Makefile.include.header
++KBUILD_EXTMOD=$(obj)
+ 
+ MOD_NAME = vboxguest
+ 
+diff --git a/drivers/misc/vboxguest/Makefile.include.header b/drivers/misc/vboxguest/Makefile.include.header
+index 702e049a1751..de49311335a7 100644
+--- a/drivers/misc/vboxguest/Makefile.include.header
++++ b/drivers/misc/vboxguest/Makefile.include.header
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
+@@ -118,7 +118,7 @@ ifeq ($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+-else # neq($(KERNELRELEASE),)
++else # neq($(KERNELVERSION),)
+ 
+  #
+  # building from kbuild (make -C <kernel_directory> M=`pwd`)
+@@ -131,13 +131,13 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+-endif # neq($(KERNELRELEASE),)
++endif # neq($(KERNELVERSION),)
+ 
+ # Kernel build folder
+ ifeq ($(KERN_DIR),)
+- KERN_DIR := /lib/modules/$(KERN_VER)/build
++ KERN_DIR := $(KBUILD_SRC)
+ endif
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
+index f68e808aa6bf..53afdbc4e0d1 100644
+--- a/drivers/misc/vboxsf/Makefile
++++ b/drivers/misc/vboxsf/Makefile
+@@ -20,6 +20,7 @@
+ # Linux kbuild sets this to our source directory if we are called from there
+ obj ?= $(CURDIR)
+ include $(obj)/Makefile.include.header
++KBUILD_EXTMOD=$(obj)
+ 
+ MOD_NAME = vboxsf
+ MOD_OBJS   = \
+@@ -69,7 +70,7 @@ else
+ 
+ # special hack for Fedora Core 6 2.6.18 (fc6), rhel5 2.6.18 (el5),
+ # ClarkConnect 4.3 (cc4) and ClarkConnect 5 (v5)
+- ifeq ($(KERNELRELEASE),)
++ ifeq ($(KERNELVERSION),)
+   MOD_EXTRA += $(foreach inc,$(KERN_INCL),\
+               $(if $(wildcard $(inc)/linux/utsrelease.h),\
+                 $(if $(shell grep '"2.6.18.*fc6.*"' $(inc)/linux/utsrelease.h; \
+@@ -78,10 +79,10 @@ else
+ 			    grep '"2.6.18.*cc4.*"' $(inc)/linux/utsrelease.h),\
+ 		-DKERNEL_FC6,),))
+  else
+-  MOD_EXTRA += $(if $(shell echo "$(KERNELRELEASE)"|grep '2.6.18.*fc6.*';\
+-			echo "$(KERNELRELEASE)"|grep '2.6.18.*el5.*';\
+-			echo "$(KERNELRELEASE)"|grep '2.6.18.*v5.*';\
+-			echo "$(KERNELRELEASE)"|grep '2.6.18.*cc4.*'),\
++  MOD_EXTRA += $(if $(shell echo "$(KERNELVERSION)"|grep '2.6.18.*fc6.*';\
++			echo "$(KERNELVERSION)"|grep '2.6.18.*el5.*';\
++			echo "$(KERNELVERSION)"|grep '2.6.18.*v5.*';\
++			echo "$(KERNELVERSION)"|grep '2.6.18.*cc4.*'),\
+ 		-DKERNEL_FC6,)
+  endif
+ endif
+diff --git a/drivers/misc/vboxsf/Makefile.include.header b/drivers/misc/vboxsf/Makefile.include.header
+index 702e049a1751..de49311335a7 100644
+--- a/drivers/misc/vboxsf/Makefile.include.header
++++ b/drivers/misc/vboxsf/Makefile.include.header
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
+@@ -118,7 +118,7 @@ ifeq ($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+-else # neq($(KERNELRELEASE),)
++else # neq($(KERNELVERSION),)
+ 
+  #
+  # building from kbuild (make -C <kernel_directory> M=`pwd`)
+@@ -131,13 +131,13 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+-endif # neq($(KERNELRELEASE),)
++endif # neq($(KERNELVERSION),)
+ 
+ # Kernel build folder
+ ifeq ($(KERN_DIR),)
+- KERN_DIR := /lib/modules/$(KERN_VER)/build
++ KERN_DIR := $(KBUILD_SRC)
+ endif
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
+index 6f95bf813530..c7228a48aa61 100755
+--- a/drivers/misc/vboxvideo/Makefile
++++ b/drivers/misc/vboxvideo/Makefile
+@@ -20,6 +20,7 @@
+ # Linux kbuild sets this to our source directory if we are called from there
+ obj ?= $(CURDIR)
+ include $(obj)/Makefile.include.header
++KBUILD_EXTMOD=$(obj)
+ 
+ BUILD =
+ 
+diff --git a/drivers/misc/vboxvideo/Makefile.include.header b/drivers/misc/vboxvideo/Makefile.include.header
+index 702e049a1751..de49311335a7 100755
+--- a/drivers/misc/vboxvideo/Makefile.include.header
++++ b/drivers/misc/vboxvideo/Makefile.include.header
+@@ -86,7 +86,7 @@ ifeq ($(USERNAME),)
+  USERNAME := noname
+ endif
+ 
+-ifeq ($(KERNELRELEASE),)
++ifeq ($(KERNELVERSION),)
+ 
+  #
+  # building from this directory
+@@ -118,7 +118,7 @@ ifeq ($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+-else # neq($(KERNELRELEASE),)
++else # neq($(KERNELVERSION),)
+ 
+  #
+  # building from kbuild (make -C <kernel_directory> M=`pwd`)
+@@ -131,13 +131,13 @@ else # neq($(KERNELRELEASE),)
+   KERN_VERSION := 26
+  endif
+ 
+- KERN_VER := $(KERNELRELEASE)
++ KERN_VER := $(KERNELVERSION)
+ 
+-endif # neq($(KERNELRELEASE),)
++endif # neq($(KERNELVERSION),)
+ 
+ # Kernel build folder
+ ifeq ($(KERN_DIR),)
+- KERN_DIR := /lib/modules/$(KERN_VER)/build
++ KERN_DIR := $(KBUILD_SRC)
+ endif
+ ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
+  $(error Error: unable to find the headers of the Linux kernel to build against. \
+-- 
+2.20.1
+

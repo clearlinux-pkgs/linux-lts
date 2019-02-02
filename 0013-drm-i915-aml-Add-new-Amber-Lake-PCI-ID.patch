@@ -1,0 +1,88 @@
+From 106ed0fa170da5e4fc286bf4066a3d8361a17aea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Roberto=20de=20Souza?= <jose.souza@intel.com>
+Date: Wed, 26 Sep 2018 18:06:50 -0700
+Subject: [PATCH 13/13] drm/i915/aml: Add new Amber Lake PCI ID
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This new AML PCI ID uses the same gen graphics as Coffe Lake not a
+Kaby Lake one like the other AMLs.
+
+So to make it more explicit renaming INTEL_AML_GT2_IDS to
+INTEL_AML_KBL_GT2_IDS and naming this id as INTEL_AML_CFL_GT2_IDS.
+
+v2:
+- missed add new AML macro to INTEL_CFL_IDS()
+- added derivated platform initials to AML macros
+
+Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Signed-off-by: José Roberto de Souza <jose.souza@intel.com>
+Signed-off-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20180927010650.22731-1-jose.souza@intel.com
+---
+ drivers/gpu/drm/i915/i915_pci.c |  3 ++-
+ include/drm/i915_pciids.h       | 11 ++++++++---
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_pci.c
+index 1df3ce134cd0..33ba5c6589a9 100644
+--- a/drivers/gpu/drm/i915/i915_pci.c
++++ b/drivers/gpu/drm/i915/i915_pci.c
+@@ -656,7 +656,7 @@ static const struct pci_device_id pciidlist[] = {
+ 	INTEL_KBL_GT2_IDS(&intel_kabylake_gt2_info),
+ 	INTEL_KBL_GT3_IDS(&intel_kabylake_gt3_info),
+ 	INTEL_KBL_GT4_IDS(&intel_kabylake_gt3_info),
+-	INTEL_AML_GT2_IDS(&intel_kabylake_gt2_info),
++	INTEL_AML_KBL_GT2_IDS(&intel_kabylake_gt2_info),
+ 	INTEL_CFL_S_GT1_IDS(&intel_coffeelake_gt1_info),
+ 	INTEL_CFL_S_GT2_IDS(&intel_coffeelake_gt2_info),
+ 	INTEL_CFL_H_GT2_IDS(&intel_coffeelake_gt2_info),
+@@ -664,6 +664,7 @@ static const struct pci_device_id pciidlist[] = {
+ 	INTEL_CFL_U_GT3_IDS(&intel_coffeelake_gt3_info),
+ 	INTEL_WHL_U_GT1_IDS(&intel_coffeelake_gt1_info),
+ 	INTEL_WHL_U_GT2_IDS(&intel_coffeelake_gt2_info),
++	INTEL_AML_CFL_GT2_IDS(&intel_coffeelake_gt2_info),
+ 	INTEL_WHL_U_GT3_IDS(&intel_coffeelake_gt3_info),
+ 	INTEL_CNL_IDS(&intel_cannonlake_info),
+ 	INTEL_ICL_11_IDS(&intel_icelake_11_info),
+diff --git a/include/drm/i915_pciids.h b/include/drm/i915_pciids.h
+index c8d3d541ad01..192667144693 100644
+--- a/include/drm/i915_pciids.h
++++ b/include/drm/i915_pciids.h
+@@ -365,16 +365,20 @@
+ 	INTEL_VGA_DEVICE(0x593B, info) /* Halo GT4 */
+ 
+ /* AML/KBL Y GT2 */
+-#define INTEL_AML_GT2_IDS(info) \
++#define INTEL_AML_KBL_GT2_IDS(info) \
+ 	INTEL_VGA_DEVICE(0x591C, info),  /* ULX GT2 */ \
+ 	INTEL_VGA_DEVICE(0x87C0, info) /* ULX GT2 */
+ 
++/* AML/CFL Y GT2 */
++#define INTEL_AML_CFL_GT2_IDS(info) \
++	INTEL_VGA_DEVICE(0x87CA, info)
++
+ #define INTEL_KBL_IDS(info) \
+ 	INTEL_KBL_GT1_IDS(info), \
+ 	INTEL_KBL_GT2_IDS(info), \
+ 	INTEL_KBL_GT3_IDS(info), \
+ 	INTEL_KBL_GT4_IDS(info), \
+-	INTEL_AML_GT2_IDS(info)
++	INTEL_AML_KBL_GT2_IDS(info)
+ 
+ /* CFL S */
+ #define INTEL_CFL_S_GT1_IDS(info) \
+@@ -427,7 +431,8 @@
+ 	INTEL_CFL_U_GT3_IDS(info), \
+ 	INTEL_WHL_U_GT1_IDS(info), \
+ 	INTEL_WHL_U_GT2_IDS(info), \
+-	INTEL_WHL_U_GT3_IDS(info)
++	INTEL_WHL_U_GT3_IDS(info), \
++	INTEL_AML_CFL_GT2_IDS(info)
+ 
+ /* CNL */
+ #define INTEL_CNL_IDS(info) \
+-- 
+2.20.1
+

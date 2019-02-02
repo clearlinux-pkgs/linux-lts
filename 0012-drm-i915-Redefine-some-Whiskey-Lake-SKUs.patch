@@ -1,0 +1,63 @@
+From b87bbbd7e032bce006b34df833897821379c758a Mon Sep 17 00:00:00 2001
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Date: Mon, 24 Sep 2018 16:43:12 -0700
+Subject: [PATCH 12/13] drm/i915: Redefine some Whiskey Lake SKUs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+commit 'b9be78531d27 ("drm/i915/whl: Introducing
+Whiskey Lake platform")' introduced WHL by moving some
+of CFL IDs here and using the Spec information of "U43" for
+most of IDs what appeared to be GT3.
+
+However when propagating the change to Mesa, Lionel noticed
+that based on number of execution unities the classification
+here seems at least strange.
+
+So, let's move for now with the information we trust more:
+the number of EUs. So we are able to propagate this change
+across the stack without getting stuck forever.
+
+Reference: https://patchwork.freedesktop.org/patch/246695/
+Fixes: b9be78531d27 ("drm/i915/whl: Introducing Whiskey Lake platform")
+Cc: Lionel Landwerlin <lionel.g.landwerlin@intel.com>
+Cc: José Roberto de Souza <jose.souza@intel.com>
+Cc: David Airlie <airlied@linux.ie>
+Signed-off-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Reviewed-by: José Roberto de Souza <jose.souza@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20180924234312.15017-1-rodrigo.vivi@intel.com
+---
+ include/drm/i915_pciids.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/include/drm/i915_pciids.h b/include/drm/i915_pciids.h
+index fd965ffbb92e..c8d3d541ad01 100644
+--- a/include/drm/i915_pciids.h
++++ b/include/drm/i915_pciids.h
+@@ -407,17 +407,17 @@
+ 
+ /* WHL/CFL U GT1 */
+ #define INTEL_WHL_U_GT1_IDS(info) \
+-	INTEL_VGA_DEVICE(0x3EA1, info)
++	INTEL_VGA_DEVICE(0x3EA1, info), \
++	INTEL_VGA_DEVICE(0x3EA4, info)
+ 
+ /* WHL/CFL U GT2 */
+ #define INTEL_WHL_U_GT2_IDS(info) \
+-	INTEL_VGA_DEVICE(0x3EA0, info)
++	INTEL_VGA_DEVICE(0x3EA0, info), \
++	INTEL_VGA_DEVICE(0x3EA3, info)
+ 
+ /* WHL/CFL U GT3 */
+ #define INTEL_WHL_U_GT3_IDS(info) \
+-	INTEL_VGA_DEVICE(0x3EA2, info), \
+-	INTEL_VGA_DEVICE(0x3EA3, info), \
+-	INTEL_VGA_DEVICE(0x3EA4, info)
++	INTEL_VGA_DEVICE(0x3EA2, info)
+ 
+ #define INTEL_CFL_IDS(info)	   \
+ 	INTEL_CFL_S_GT1_IDS(info), \
+-- 
+2.20.1
+
