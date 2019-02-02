@@ -1,18 +1,18 @@
-From e0417d7a4e69257af3d356b86a237e1d201d1671 Mon Sep 17 00:00:00 2001
+From 52f1d663fd44a7ca524c69ed142e95b54d14aad7 Mon Sep 17 00:00:00 2001
 From: Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
 Date: Fri, 1 Feb 2019 17:59:28 -0600
-Subject: [PATCH 2002/2002] virtualbox: setup Kconfig and Makefiles
+Subject: [PATCH] virtualbox: setup Kconfig and Makefiles
 
 ---
  drivers/misc/Kconfig                          | 31 +++++++++++++++++++
  drivers/misc/Makefile                         |  3 ++
- drivers/misc/vboxguest/Makefile               |  1 +
+ drivers/misc/vboxguest/Makefile               |  5 +++
  .../misc/vboxguest/Makefile.include.header    | 10 +++---
- drivers/misc/vboxsf/Makefile                  | 11 ++++---
+ drivers/misc/vboxsf/Makefile                  | 15 ++++++---
  drivers/misc/vboxsf/Makefile.include.header   | 10 +++---
- drivers/misc/vboxvideo/Makefile               |  1 +
+ drivers/misc/vboxvideo/Makefile               |  5 +++
  .../misc/vboxvideo/Makefile.include.header    | 10 +++---
- 8 files changed, 57 insertions(+), 20 deletions(-)
+ 8 files changed, 69 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
 index 3726eacdf65d..f124d4b55188 100644
@@ -71,14 +71,18 @@ index af22bbc3d00c..45351a953425 100644
  obj-$(CONFIG_ASPEED_LPC_SNOOP)	+= aspeed-lpc-snoop.o
  obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
 diff --git a/drivers/misc/vboxguest/Makefile b/drivers/misc/vboxguest/Makefile
-index c1a8fe10f247..5858c523b6b3 100644
+index c1a8fe10f247..85340d55c0a8 100644
 --- a/drivers/misc/vboxguest/Makefile
 +++ b/drivers/misc/vboxguest/Makefile
-@@ -27,6 +27,7 @@
+@@ -27,6 +27,11 @@
  # Linux kbuild sets this to our source directory if we are called from there
  obj ?= $(CURDIR)
  include $(obj)/Makefile.include.header
++ifneq ($(KBUILD_SRC),)
++KBUILD_EXTMOD=$(KBUILD_SRC)/$(obj)
++else
 +KBUILD_EXTMOD=$(obj)
++endif
  
  MOD_NAME = vboxguest
  
@@ -122,18 +126,22 @@ index 702e049a1751..de49311335a7 100644
  ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
   $(error Error: unable to find the headers of the Linux kernel to build against. \
 diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
-index f68e808aa6bf..53afdbc4e0d1 100644
+index f68e808aa6bf..5903a4e21416 100644
 --- a/drivers/misc/vboxsf/Makefile
 +++ b/drivers/misc/vboxsf/Makefile
-@@ -20,6 +20,7 @@
+@@ -20,6 +20,11 @@
  # Linux kbuild sets this to our source directory if we are called from there
  obj ?= $(CURDIR)
  include $(obj)/Makefile.include.header
++ifneq ($(KBUILD_SRC),)
++KBUILD_EXTMOD=$(KBUILD_SRC)/$(obj)
++else
 +KBUILD_EXTMOD=$(obj)
++endif
  
  MOD_NAME = vboxsf
  MOD_OBJS   = \
-@@ -69,7 +70,7 @@ else
+@@ -69,7 +74,7 @@ else
  
  # special hack for Fedora Core 6 2.6.18 (fc6), rhel5 2.6.18 (el5),
  # ClarkConnect 4.3 (cc4) and ClarkConnect 5 (v5)
@@ -142,7 +150,7 @@ index f68e808aa6bf..53afdbc4e0d1 100644
    MOD_EXTRA += $(foreach inc,$(KERN_INCL),\
                $(if $(wildcard $(inc)/linux/utsrelease.h),\
                  $(if $(shell grep '"2.6.18.*fc6.*"' $(inc)/linux/utsrelease.h; \
-@@ -78,10 +79,10 @@ else
+@@ -78,10 +83,10 @@ else
  			    grep '"2.6.18.*cc4.*"' $(inc)/linux/utsrelease.h),\
  		-DKERNEL_FC6,),))
   else
@@ -197,14 +205,18 @@ index 702e049a1751..de49311335a7 100644
  ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
   $(error Error: unable to find the headers of the Linux kernel to build against. \
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
-index 6f95bf813530..c7228a48aa61 100755
+index 6f95bf813530..e3e5766bb0db 100755
 --- a/drivers/misc/vboxvideo/Makefile
 +++ b/drivers/misc/vboxvideo/Makefile
-@@ -20,6 +20,7 @@
+@@ -20,6 +20,11 @@
  # Linux kbuild sets this to our source directory if we are called from there
  obj ?= $(CURDIR)
  include $(obj)/Makefile.include.header
++ifneq ($(KBUILD_SRC),)
++KBUILD_EXTMOD=$(KBUILD_SRC)/$(obj)
++else
 +KBUILD_EXTMOD=$(obj)
++endif
  
  BUILD =
  
