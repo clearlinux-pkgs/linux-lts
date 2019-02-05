@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.19.19
-Release:        415
+Release:        416
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -31,6 +31,8 @@ Requires: init-rdahead-extras
 # kconfig: linux-4.19.14-682
 
 #    000X: cve, bugfixes patches
+Patch0001: CVE-2018-16880.patch
+Patch0002: CVE-2019-3819.patch
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-drm-i915-cfl-Add-a-new-CFL-PCI-ID.patch
@@ -111,6 +113,8 @@ Linux kernel build files and install script
 %setup -q -n linux-4.19.19
 
 #     000X  cve, bugfixes patches
+%patch0001 -p1
+%patch0002 -p1
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
