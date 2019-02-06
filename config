@@ -4,7 +4,7 @@
 #
 
 #
-# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.2.1 20180502
+# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.2.1 20190205 gcc-8-branch@268556
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80201
@@ -1828,7 +1828,7 @@ CONFIG_PREVENT_FIRMWARE_BUILD=y
 # Firmware loader
 #
 CONFIG_FW_LOADER=y
-CONFIG_EXTRA_FIRMWARE="i915/kbl_huc_ver02_00_1810.bin i915/kbl_dmc_ver1_04.bin"
+CONFIG_EXTRA_FIRMWARE="i915/kbl_dmc_ver1_04.bin"
 CONFIG_EXTRA_FIRMWARE_DIR="firmware"
 CONFIG_FW_LOADER_USER_HELPER=y
 # CONFIG_FW_LOADER_USER_HELPER_FALLBACK is not set
@@ -4516,7 +4516,7 @@ CONFIG_SND_COMPRESS_OFFLOAD=m
 CONFIG_SND_JACK=y
 CONFIG_SND_JACK_INPUT_DEV=y
 # CONFIG_SND_OSSEMUL is not set
-# CONFIG_SND_PCM_TIMER is not set
+CONFIG_SND_PCM_TIMER=y
 CONFIG_SND_HRTIMER=m
 CONFIG_SND_DYNAMIC_MINORS=y
 CONFIG_SND_MAX_CARDS=32
@@ -7293,3 +7293,7 @@ CONFIG_DEBUG_BOOT_PARAMS=y
 # CONFIG_UNWINDER_ORC is not set
 CONFIG_UNWINDER_FRAME_POINTER=y
 # CONFIG_UNWINDER_GUESS is not set
+
+# kernel-config sources:
+# FILEVER=/usr/share/kernel-config/base-4.19-3-17
+# FILEVER=/usr/share/kernel-config/mandatory-4.19-3-17
