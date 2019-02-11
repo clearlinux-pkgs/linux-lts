@@ -1,10 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.19 Kernel Configuration
+# Linux/x86 4.19.20 Kernel Configuration
 #
 
 #
-# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.2.1 20190205 gcc-8-branch@268556
+# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.2.1 20190211 gcc-8-branch@268776
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80201
@@ -5716,7 +5716,7 @@ CONFIG_VT6656=m
 # CONFIG_MOST is not set
 # CONFIG_KS7010 is not set
 # CONFIG_GREYBUS is not set
-CONFIG_DRM_VBOXVIDEO=m
+# CONFIG_DRM_VBOXVIDEO is not set
 # CONFIG_PI433 is not set
 CONFIG_MTK_MMC=m
 # CONFIG_MTK_AEE_KDUMP is not set
