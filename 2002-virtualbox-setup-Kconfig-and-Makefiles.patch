@@ -71,7 +71,7 @@ index af22bbc3d00c..786464acb96f 100644
  obj-$(CONFIG_ASPEED_LPC_SNOOP)	+= aspeed-lpc-snoop.o
  obj-$(CONFIG_PCI_ENDPOINT_TEST)	+= pci_endpoint_test.o
 diff --git a/drivers/misc/vboxguest/Makefile b/drivers/misc/vboxguest/Makefile
-index 23d3221494b6..813ac8ed376b 100644
+index c1a8fe10f247..85340d55c0a8 100644
 --- a/drivers/misc/vboxguest/Makefile
 +++ b/drivers/misc/vboxguest/Makefile
 @@ -27,6 +27,11 @@
@@ -126,7 +126,7 @@ index 702e049a1751..de49311335a7 100644
  ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
   $(error Error: unable to find the headers of the Linux kernel to build against. \
 diff --git a/drivers/misc/vboxsf/Makefile b/drivers/misc/vboxsf/Makefile
-index 9b59dee0f65e..d6de999cc6ff 100644
+index f68e808aa6bf..5903a4e21416 100644
 --- a/drivers/misc/vboxsf/Makefile
 +++ b/drivers/misc/vboxsf/Makefile
 @@ -20,6 +20,11 @@
@@ -205,7 +205,7 @@ index 702e049a1751..de49311335a7 100644
  ifneq ($(shell if test -d $(KERN_DIR); then echo yes; fi),yes)
   $(error Error: unable to find the headers of the Linux kernel to build against. \
 diff --git a/drivers/misc/vboxvideo/Makefile b/drivers/misc/vboxvideo/Makefile
-index 8cdbdb5678a9..969ec32d63d0 100755
+index 6f95bf813530..e3e5766bb0db 100755
 --- a/drivers/misc/vboxvideo/Makefile
 +++ b/drivers/misc/vboxvideo/Makefile
 @@ -20,6 +20,11 @@
