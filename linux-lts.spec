@@ -13,7 +13,6 @@ Group:          kernel
 Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.26.tar.xz
 Source1:        config
 Source2:        cmdline
-Source3:        install-vbox-lga
 
 %define ktarget  lts
 %define kversion %{version}-%{release}.%{ktarget}
@@ -271,7 +270,6 @@ rm -rf %{buildroot}/usr/lib/firmware
 /usr/lib/kernel/default-%{ktarget}
 /usr/lib/modules/%{kversion}/kernel
 /usr/lib/modules/%{kversion}/modules.*
-/usr/sbin/install-vbox-lga
 
 %files extra
 %dir /usr/lib/kernel
