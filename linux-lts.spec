@@ -183,7 +183,6 @@ BuildKernel %{ktarget}
 
 %install
 mkdir -p %{buildroot}/usr/sbin
-install -m 755 %{SOURCE3} %{buildroot}/usr/sbin
 
 InstallKernel() {
 
