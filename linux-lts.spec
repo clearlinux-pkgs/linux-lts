@@ -4,13 +4,13 @@
 #
 
 Name:           linux-lts
-Version:        4.19.26
-Release:        434
+Version:        4.19.27
+Release:        435
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.26.tar.xz
+Source0:        https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.27.tar.xz
 Source1:        config
 Source2:        cmdline
 
@@ -109,7 +109,7 @@ Requires:       %{name} = %{version}-%{release}, %{name}-extra = %{version}-%{re
 Linux kernel build files and install script
 
 %prep
-%setup -q -n linux-4.19.26
+%setup -q -n linux-4.19.27
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
