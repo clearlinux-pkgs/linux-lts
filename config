@@ -1,10 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.26 Kernel Configuration
+# Linux/x86 4.19.27 Kernel Configuration
 #
 
 #
-# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.3.1 20190301 gcc-8-branch@269313
+# Compiler: gcc (Clear Linux OS for Intel Architecture) 8.3.1 20190307 gcc-8-branch@269452
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80301
@@ -6475,8 +6475,8 @@ CONFIG_CACHEFILES=m
 # CD-ROM/DVD Filesystems
 #
 CONFIG_ISO9660_FS=m
-# CONFIG_JOLIET is not set
-# CONFIG_ZISOFS is not set
+CONFIG_JOLIET=y
+CONFIG_ZISOFS=y
 CONFIG_UDF_FS=m
 
 #
@@ -7295,6 +7295,7 @@ CONFIG_DEBUG_BOOT_PARAMS=y
 CONFIG_UNWINDER_FRAME_POINTER=y
 # CONFIG_UNWINDER_GUESS is not set
 
+
 # kernel-config sources:
-# FILEVER=/usr/share/kernel-config/base-4.19-3-17
-# FILEVER=/usr/share/kernel-config/mandatory-4.19-3-17
+# FILEVER=/usr/share/kernel-config/base-4.19-3-19
+# FILEVER=/usr/share/kernel-config/mandatory-4.19-3-19
