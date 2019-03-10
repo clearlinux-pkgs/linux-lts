@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.19.28
-Release:        437
+Release:        438
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
@@ -31,7 +31,6 @@ Requires: init-rdahead-extras
 
 #    000X: cve, bugfixes patches
 Patch0001: 0002-vhost-vsock-fix-vhost-vsock-cid-hashing-inconsistent.patch
-Patch0003: CVE-2019-8980.patch
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-drm-i915-cfl-Add-a-new-CFL-PCI-ID.patch
@@ -113,7 +112,6 @@ Linux kernel build files and install script
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
-%patch0003 -p1
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
