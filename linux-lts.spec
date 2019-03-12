@@ -268,9 +268,9 @@ createCPIO %{ktarget} %{kversion}
 
 rm -rf %{buildroot}/usr/lib/firmware
 
-mkdir -p %{buildroot}/usr/share/package-licenses/%{name}
-cp COPYING %{buildroot}/usr/share/package-licenses/%{name}/COPYING
-cp -a LICENSES/* %{buildroot}/usr/share/package-licenses/%{name}
+mkdir -p %{buildroot}/usr/share/package-licenses/linux-lts
+cp COPYING %{buildroot}/usr/share/package-licenses/linux-lts/COPYING
+cp -a LICENSES/* %{buildroot}/usr/share/package-licenses/linux-lts
 
 %files
 %dir /usr/lib/kernel
@@ -289,7 +289,7 @@ cp -a LICENSES/* %{buildroot}/usr/share/package-licenses/%{name}
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/%{name}
+/usr/share/package-licenses/linux-lts
 
 %files cpio
 /usr/lib/kernel/initrd-org.clearlinux.%{ktarget}.%{version}-%{release}
