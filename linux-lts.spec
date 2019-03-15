@@ -5,7 +5,7 @@
 
 Name:           linux-lts
 Version:        4.19.29
-Release:        440
+Release:        441
 License:        GPL-2.0
 Summary:        The Linux kernel
 Url:            http://www.kernel.org/
