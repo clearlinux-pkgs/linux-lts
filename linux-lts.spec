@@ -32,6 +32,7 @@ Requires: linux-lts-license = %{version}-%{release}
 
 #    000X: cve, bugfixes patches
 Patch0001: 0001-i40iw-Avoid-panic-when-handling-the-inetdev-event.patch
+Patch0002: CVE-2019-9857.patch
 
 #    00XY: Mainline patches, upstream backports
 Patch0011: 0011-drm-i915-cfl-Add-a-new-CFL-PCI-ID.patch
@@ -123,6 +124,7 @@ Linux kernel build files and install script
 
 #     000X  cve, bugfixes patches
 %patch0001 -p1
+%patch0002 -p1
 
 #     00XY  Mainline patches, upstream backports
 %patch0011 -p1
